@@ -1,0 +1,45 @@
+{
+  "name": "protractor-typescript-bdd",
+  "version": "1.0.0",
+  "description": "An example project to demonstrate protractor tests for angular apps",
+  "scripts": {
+    "build": "tsc",
+    "lint": "tslint -c tslint.json '**/*.ts'",
+    "test": "tsc jasmine/config.ts --outDir ./dist/ && protractor dist/config.js",
+    "webdriver-update": "webdriver-manager update",
+    "webdriver-start": "webdriver-manager start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liam-docherty/protractor-typescript-bdd.git"
+  },
+  "keywords": [
+    "protractor",
+    "typescript",
+    "angular",
+    "angularJS",
+    "bdd",
+    "behaviour driven development",
+    "testing",
+    "automation",
+    "selenium",
+    "webdriverJS"
+  ],
+  "author": "Liam Docherty <liam_docherty1990@hotmail.co.uk>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liam-docherty/protractor-typescript-bdd/issues"
+  },
+  "homepage": "https://github.com/liam-docherty/protractor-typescript-bdd#readme",
+  "devDependencies": {
+    "@types/jasmine": "^3.3.16",
+    "@types/node": "^12.6.8",
+    "jasmine": "^3.4.0",
+    "jasmine-spec-reporter": "^4.2.1",
+    "protractor": "^5.4.2",
+    "protractor-jasmine2-screenshot-reporter": "^0.5.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  }
+}
