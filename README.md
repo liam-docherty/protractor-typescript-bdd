@@ -18,6 +18,12 @@ Referring to https://scotch.io/tutorials/setting-up-a-node-project-with-typescri
 `npm install @types/node --save-dev` --'os' in config
 `npm install --ts-node --save-dev`
 
+`npm install protractor-cucumber-framework --save-dev`
+`npm install cucumber --save-dev`
+`npm install chai --save-dev`
+`npm install protractor-multiple-cucumber-html-reporter-plugin --save-dev`
+`npm install @types/cucumber --save-dev`
+
 Manually create a file at the root of the project tsconfig.json - referring to https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 
 `./node_modules/.bin/tslint --init` to create tslint file

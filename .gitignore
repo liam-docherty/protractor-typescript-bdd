@@ -7,3 +7,7 @@
 
 # dependencies
 /node_modules
+
+# reports
+/cucumber/reports/*
+/jasmine/reports/*

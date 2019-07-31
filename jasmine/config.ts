@@ -43,7 +43,7 @@ export const config: Config = {
   baseUrl: 'https://angular.io/',
   directConnect: true,
   specs: [
-    '../jasmine/specs/*.spec.ts',
+    '../../jasmine/specs/*.spec.ts',
   ],
   exclude: [],
   capabilities: {
@@ -61,7 +61,7 @@ export const config: Config = {
   },
   onPrepare() {
     require('ts-node').register({
-      project: require('path').join(__dirname, '../jasmine/tsconfig.e2e.json'),
+      project: require('path').join(__dirname, '../../jasmine/tsconfig.e2e.json'),
       // project: '../tsconfig.json',
     });
     jasmine.getEnv().addReporter(specReporter);
