@@ -40,7 +40,7 @@ export const config: Config = {
     print: () => { },
   },
   allScriptsTimeout: 11000,
-  baseUrl: 'https://angular.io/',
+  baseUrl: 'http://www.globalsqa.com/angularJs-protractor/',
   directConnect: true,
   specs: [
     '../../jasmine/specs/*.spec.ts',
