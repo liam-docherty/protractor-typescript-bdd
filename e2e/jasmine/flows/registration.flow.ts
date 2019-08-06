@@ -2,6 +2,7 @@ import { browser } from 'protractor';
 import { Login } from '../../page-objects/login.po';
 import { Registration } from '../../page-objects/registration.po';
 import { User } from '../../support/interface/user';
+import { config } from '../config';
 
 const registration: Registration = new Registration();
 const login: Login = new Login();
@@ -17,7 +18,7 @@ export class RegistrationFlow {
 
   public async confirmRedirectToLogin(): Promise<void> {
     await browser.getCurrentUrl().then(url => expect(url)
-      .toEqual('http://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login'));
+      .toEqual(`${config.baseUrl}registration-login-example/#/login`));
     await login.getSuccessAlertText().then(text => expect(text).toEqual('Registration successful'));
   }
 }

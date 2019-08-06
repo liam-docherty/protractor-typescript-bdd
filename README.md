@@ -38,7 +38,8 @@ In a new terminal then run either of the test scripts, depending on whether you 
 // TODO
 
 ## Jasmine - Spec & Flow Notes
-// TODO
+// TODO General <br>
+// TODO Flow example: what if login changes from a simple username, password component to a multiple page process e.g. captcha on page 2
 
 ## Protractor Config
 // TODO
@@ -77,3 +78,51 @@ Manually create a file at the root of the project tsconfig.json - referring to h
 `./node_modules/.bin/tslint --init` to create tslint file
 
 Explain .gitignore file
+
+## Example of Refactoring Benefits
+Initial creation of test that does not consider Don't Repeat Yourself principles:
+````
+it('should redirect to Login after successfully completing registration', async () => {
+     await browser.get('registration-login-example/#/register');
+     await element(by.id('firstName')).sendKeys('Test');
+     await element(by.id('Text1')).sendKeys('User');
+     await element(by.id('username')).sendKeys('TestUser');
+     await element(by.id('password')).sendKeys('Password1');
+     await element(by.className('form-actions')).element(by.css('.btn-primary')).click();
+     await browser.getCurrentUrl().then(url => expect(url)
+       .toEqual('http://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login'));
+     await element(by.className('alert-success')).getText().then(text => expect(text)
+       .toEqual('Registration successful'));
+   });
+````
+Below is the same test re-written by introducing the Page Object Model and a variable to hold the name, username and password of the user:
+````
+it('should redirect to Login after successfully completing registration', async () => {
+    await browser.get('registration-login-example/#/register');
+    await registration.enterFirstName(testUser1.firstName);
+    await registration.enterLastName(testUser1.lastName);
+    await registration.enterUsername(testUser1.username);
+    await registration.enterPassword(testUser1.password);
+    await registration.clickRegisterButton();
+    await browser.getCurrentUrl().then(url => expect(url)
+      .toEqual('http://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login'));
+    await login.getSuccessAlertText().then(text => expect(text).toEqual('Registration successful'));
+  });
+````
+By using the POM the following improvements are made:
+* Removes the identification of the elements of each step. This means that if the element identifier changes, this change is only required once across all tests
+* Makes the test easier to read, `registration.enterFirstName(testUser1.firstName)` is easier to read than `element(by.id('firstName')).sendKeys('Test');`
+
+Then finally is the same test from e2e/jasmine/registration.spec.ts file:
+````
+it('should redirect to Login after successfully completing registration', async () => {
+    await flow.goToRegistration();
+    await flow.completeRegistration(testUser1);
+    await flow.confirmRedirectToLogin();
+  });
+````
+By applying the Flow approach (described above):
+* Makes the test easier to read by describing behaviour in a BDD fashion as you should with Gherkin. 
+* Means that if there is a change to a flow, it can be made once and applied to all tests. Two examples might be:
+    * Registration becomes a multiple page process, and completing registration is a pre-requisite to many tests
+    * There are multiple tests that will redirect the user to the Login page but we want to re-use the same set of assertions
