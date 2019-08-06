@@ -1,0 +1,39 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "max-line-length": {
+      "options": [120]
+    },
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "curly": true,
+    "prefer-const": true,
+    "new-parens": true,
+    "array-type": [
+      true,
+      "array"
+    ],
+    "class-name": true,
+    "file-name-casing": [
+      true,
+      "kebab-case"
+    ],
+    "whitespace": [true, "check-module"],
+    "object-literal-sort-keys": false,
+    "arrow-parens": false,
+    "interface-name": false,
+    "no-empty": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  }
+}
