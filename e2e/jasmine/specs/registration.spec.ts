@@ -9,6 +9,7 @@ const registration: Registration = new Registration();
 const flow: RegistrationFlow = new RegistrationFlow();
 
 describe('Registration >', () => {
+  // TODO: Move this re-work into a read me / or spec to explain the refactoring
   xit('should register successfully v1', async () => {
     await browser.get('registration-login-example/#/register');
     await element(by.id('firstName')).sendKeys('Test');
@@ -53,7 +54,7 @@ describe('Registration >', () => {
   it('should register successfully v5', async () => {
     await flow.goToRegistration();
     await flow.completeRegistration(testUser1);
-    await flow.confirmTheUserIsRedirectedToLogin();
+    await flow.confirmRedirectToLogin();
   });
 
   it('should disable Register until all fields are completed', async () => {

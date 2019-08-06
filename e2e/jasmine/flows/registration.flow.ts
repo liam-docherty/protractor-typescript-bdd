@@ -15,7 +15,7 @@ export class RegistrationFlow {
     await registration.completeRegistrationForm(user);
   }
 
-  public async confirmTheUserIsRedirectedToLogin(): Promise<void> {
+  public async confirmRedirectToLogin(): Promise<void> {
     await browser.getCurrentUrl().then(url => expect(url)
       .toEqual('http://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login'));
     await login.getSuccessAlertText().then(text => expect(text).toEqual('Registration successful'));
