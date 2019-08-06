@@ -1,4 +1,8 @@
-import { by, element, ElementFinder } from 'protractor';
+import {
+  by,
+  element,
+  ElementFinder
+} from 'protractor';
 import { User } from '../support/interface/user';
 
 export class Registration {
@@ -6,22 +10,23 @@ export class Registration {
   private lastNameField: ElementFinder = element(by.id('Text1'));
   private usernameField: ElementFinder = element(by.id('username'));
   private passwordField: ElementFinder = element(by.id('password'));
-  private registerButton: ElementFinder = element(by.className('form-actions')).element(by.css('.btn-primary'));
+  private buttonBar: ElementFinder = element(by.className('form-actions'));
+  private registerButton: ElementFinder = this.buttonBar.element(by.css('.btn-primary'));
 
-  public async enterFirstName(text: string): Promise<void> {
-    await this.firstNameField.sendKeys(text);
+  public async enterFirstName(firstName: string): Promise<void> {
+    await this.firstNameField.sendKeys(firstName);
   }
 
-  public async enterLastName(text: string): Promise<void> {
-    await this.lastNameField.sendKeys(text);
+  public async enterLastName(lastName: string): Promise<void> {
+    await this.lastNameField.sendKeys(lastName);
   }
 
-  public async enterUsername(text: string): Promise<void> {
-    await this.usernameField.sendKeys(text);
+  public async enterUsername(username: string): Promise<void> {
+    await this.usernameField.sendKeys(username);
   }
 
-  public async enterPassword(text: string): Promise<void> {
-    await this.passwordField.sendKeys(text);
+  public async enterPassword(password: string): Promise<void> {
+    await this.passwordField.sendKeys(password);
   }
 
   public async clickRegisterButton(): Promise<void> {

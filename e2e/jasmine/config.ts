@@ -1,7 +1,10 @@
 import { Promise } from 'es6-promise';
 import { SpecReporter } from 'jasmine-spec-reporter';
 import { platform } from 'os';
-import { browser, Config } from 'protractor';
+import {
+  browser,
+  Config,
+} from 'protractor';
 
 // tslint:disable-next-line: no-var-requires
 const htmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
@@ -13,7 +16,7 @@ const specReporter = new SpecReporter({
 });
 
 const htmlReporter = new htmlScreenshotReporter({
-  dest: './jasmine/reports',
+  dest: './e2e/jasmine/reports',
   filename: 'report.html',
   cleanDestination: true,
   reportOnlyFailedSpecs: false,
@@ -36,7 +39,8 @@ export const config: Config = {
   jasmineNodeOpts: {
     defaultTimeoutInterval: 80000,
     showColors: true,
-    print: () => { },
+    print: () => {
+    },
   },
   allScriptsTimeout: 11000,
   baseUrl: 'http://www.globalsqa.com/angularJs-protractor/',

@@ -82,7 +82,7 @@ Explain .gitignore file
 ## Example of Refactoring Benefits
 Initial creation of test that does not consider Don't Repeat Yourself principles:
 ````
-it('should redirect to Login after successfully completing registration', async () => {
+it('should display the Login page after successfully completing registration', async () => {
      await browser.get('registration-login-example/#/register');
      await element(by.id('firstName')).sendKeys('Test');
      await element(by.id('Text1')).sendKeys('User');
@@ -97,7 +97,7 @@ it('should redirect to Login after successfully completing registration', async 
 ````
 Below is the same test re-written by introducing the Page Object Model and a variable to hold the name, username and password of the user:
 ````
-it('should redirect to Login after successfully completing registration', async () => {
+it('should display the Login page after successfully completing registration', async () => {
     await browser.get('registration-login-example/#/register');
     await registration.enterFirstName(testUser1.firstName);
     await registration.enterLastName(testUser1.lastName);
@@ -115,7 +115,7 @@ By using the POM the following improvements are made:
 
 Then finally is the same test from e2e/jasmine/registration.spec.ts file:
 ````
-it('should redirect to Login after successfully completing registration', async () => {
+it('should display the Login page after successfully completing registration', async () => {
     await flow.goToRegistration();
     await flow.completeRegistration(testUser1);
     await flow.confirmRedirectToLogin();
