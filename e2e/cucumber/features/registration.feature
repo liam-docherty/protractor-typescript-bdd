@@ -2,6 +2,7 @@ Feature: Registration
 
    Testing of the Registration component found on http://www.globalsqa.com/angularjs-protractor-practice-site/
 
-   // TODO: Add at least one test to show the difference with Cucumber and Jasmine BDD
    Scenario: After completing registration the user should be redirected to the Login page
-     Given I am on the registration page
+     Given the user is on the registration page
+     When the user successfully completes registration
+     Then the user should be redirected to the login page

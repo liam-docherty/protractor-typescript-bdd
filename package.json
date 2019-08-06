@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/liam-docherty/protractor-typescript-bdd#readme",
   "devDependencies": {
+    "@types/chai": "^4.1.7",
     "@types/cucumber": "^4.0.7",
     "@types/jasmine": "^3.3.16",
     "@types/node": "^12.6.8",

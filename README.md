@@ -67,9 +67,10 @@ Referring to https://scotch.io/tutorials/setting-up-a-node-project-with-typescri
 #### Cucumber Specific
 * `npm install protractor-cucumber-framework --save-dev`<br>
 * `npm install cucumber --save-dev`<br>
-* `npm install chai --save-dev`<br>
-* `npm install protractor-multiple-cucumber-html-reporter-plugin --save-dev`<br>
 * `npm install @types/cucumber --save-dev`<br>
+* `npm install chai --save-dev`<br>
+* `npm install @types/chai --save-dev`<br>
+* `npm install protractor-multiple-cucumber-html-reporter-plugin --save-dev`<br>
 
 Manually create a file at the root of the project tsconfig.json - referring to https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 
