@@ -44,6 +44,9 @@ In a new terminal then run either of the test scripts, depending on whether you 
 ## Protractor Config
 // TODO
 
+## Pre-Push
+// TODO: Run both sets of tests and lint
+
 ## Creating the Project
 // TODO: Needs tidied up<br>
 Referring to
@@ -58,6 +61,7 @@ Referring to https://scotch.io/tutorials/setting-up-a-node-project-with-typescri
 * `npm install protractor --save-dev`<br>
 * `npm install @types/node --save-dev`<br> --'os' in config
 * `npm install --ts-node --save-dev`<br>
+* `npm install ghooks --save-dev`<br>
 
 #### Jasmine Specific
 * `npm install jasmine --save-dev`<br>

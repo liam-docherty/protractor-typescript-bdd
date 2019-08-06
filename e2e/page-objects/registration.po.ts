@@ -1,7 +1,7 @@
 import {
   by,
   element,
-  ElementFinder
+  ElementFinder,
 } from 'protractor';
 import { User } from '../support/interface/user';
 

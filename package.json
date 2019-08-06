@@ -2,9 +2,15 @@
   "name": "protractor-typescript-bdd",
   "version": "1.0.0",
   "description": "An example project to demonstrate protractor tests for angular apps",
+  "config": {
+    "ghooks": {
+      "pre-push": "npm run pre-push"
+    }
+  },
   "scripts": {
     "build": "tsc --outDir ./dist/e2e/",
     "lint": "tslint -c tslint.json '**/*.ts'",
+    "pre-push": "npm run build && npm run lint",
     "test-jasmine": "npm run build && protractor dist/e2e/jasmine/config.js",
     "test-cucumber": "npm run build && protractor dist/e2e/cucumber/config.js",
     "webdriver-update": "webdriver-manager update",
@@ -39,6 +45,7 @@
     "@types/node": "^12.6.8",
     "chai": "^4.2.0",
     "cucumber": "^5.1.0",
+    "ghooks": "^2.0.4",
     "jasmine": "^3.4.0",
     "jasmine-spec-reporter": "^4.2.1",
     "protractor": "^5.4.2",

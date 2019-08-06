@@ -1,7 +1,7 @@
 import {
   browser,
   by,
-  element
+  element,
 } from 'protractor';
 import { testUser1 } from '../../support/constants/users';
 import { RegistrationFlow } from '../flows/registration.flow';

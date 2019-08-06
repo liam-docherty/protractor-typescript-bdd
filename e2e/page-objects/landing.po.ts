@@ -1,15 +1,16 @@
 import {
   by,
   element,
+  ElementArrayFinder,
   ElementFinder,
 } from 'protractor';
 
 export class Landing {
   private heading: ElementFinder = element(by.tagName('h1'));
-  private headingParagraph: ElementFinder;
+  private headingParagraph: ElementFinder = element(by.xpath('/html/body/div[1]/div/div/div/p[1]'));
   private subHeading: ElementFinder = element(by.tagName('h3'));
-  private registeredUsers: ElementFinder;
-  private logoutButton: ElementFinder;
+  private registeredUsers: ElementArrayFinder = element.all(by.xpath('/html/body/div[1]/div/div/div/ul/li'));
+  private logoutButton: ElementFinder = element(by.className('btn-primary'));
 
   public async getHeadingText(): Promise<string> {
     return await this.heading.getText();
@@ -21,6 +22,14 @@ export class Landing {
 
   public async getSubHeadingText(): Promise<string> {
     return await this.subHeading.getText();
+  }
+
+  public async countRegisteredUsers(): Promise<number> {
+    return await this.registeredUsers.count();
+  }
+
+  public async getUserText(rowIndex: number): Promise<string> {
+    return await this.registeredUsers.get(rowIndex).getText();
   }
 
   public async getLogoutButtonText(): Promise<string> {

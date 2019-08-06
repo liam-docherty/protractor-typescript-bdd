@@ -9,8 +9,8 @@ describe('Login >', () => {
     await flow.completeRegistration(testUser1);
   });
 
-  it('should display the Landing page successfully completing login', async () => {
+  it('should display the Landing page after successfully completing login', async () => {
     await flow.completeLogin(testUser1);
-    await flow.confirmRedirectToLandingPage();
+    await flow.confirmRedirectToLandingPage(testUser1);
   });
 });
