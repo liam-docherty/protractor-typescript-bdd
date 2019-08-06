@@ -36,7 +36,6 @@ export const config: Config = {
   jasmineNodeOpts: {
     defaultTimeoutInterval: 80000,
     showColors: true,
-    // tslint:disable-next-line: no-empty
     print: () => { },
   },
   allScriptsTimeout: 11000,

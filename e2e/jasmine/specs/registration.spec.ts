@@ -36,12 +36,7 @@ describe('Registration >', () => {
 
   xit('should register successfully v3', async () => {
     await browser.get('registration-login-example/#/register');
-    await registration.completeRegistrationForm({
-      firstName: testUser1.firstName,
-      lastName: testUser1.lastName,
-      username: testUser1.username,
-      password: testUser1.password,
-    });
+    await registration.completeRegistrationForm(testUser1);
     await browser.getCurrentUrl().then(url => expect(url)
       .toEqual('http://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login'));
     await login.getSuccessAlertText().then(text => expect(text).toEqual('Registration successful'));
@@ -49,26 +44,15 @@ describe('Registration >', () => {
 
   xit('should register successfully v4', async () => {
     await browser.get('registration-login-example/#/register');
-    await flow.completeRegistration({
-      firstName: testUser1.firstName,
-      lastName: testUser1.lastName,
-      username: testUser1.username,
-      password: testUser1.password,
-    });
+    await flow.completeRegistration(testUser1);
     await browser.getCurrentUrl().then(url => expect(url)
       .toEqual('http://www.globalsqa.com/angularJs-protractor/registration-login-example/#/login'));
     await login.getSuccessAlertText().then(text => expect(text).toEqual('Registration successful'));
   });
 
-  // TODO: Rework to pass in user instead of the 4 properties
   it('should register successfully v5', async () => {
     await flow.goToRegistration();
-    await flow.completeRegistration({
-      firstName: testUser1.firstName,
-      lastName: testUser1.lastName,
-      username: testUser1.username,
-      password: testUser1.password,
-    });
+    await flow.completeRegistration(testUser1);
     await flow.confirmTheUserIsRedirectedToLogin();
   });
 

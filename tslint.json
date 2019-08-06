@@ -26,7 +26,9 @@
     ],
     "whitespace": [true, "check-module"],
     "object-literal-sort-keys": false,
-    "arrow-parens": false
+    "arrow-parens": false,
+    "interface-name": false,
+    "no-empty": false
   },
   "rulesDirectory": [],
   "linterOptions": {

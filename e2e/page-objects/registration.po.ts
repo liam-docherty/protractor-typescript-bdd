@@ -1,5 +1,5 @@
 import { by, element, ElementFinder } from 'protractor';
-import { RegistrationFields } from '../support/interface/registration-fields';
+import { User } from '../support/interface/user';
 
 export class Registration {
   private firstNameField: ElementFinder = element(by.id('firstName'));
@@ -8,35 +8,35 @@ export class Registration {
   private passwordField: ElementFinder = element(by.id('password'));
   private registerButton: ElementFinder = element(by.className('form-actions')).element(by.css('.btn-primary'));
 
-  async enterFirstName(text: string): Promise<void> {
+  public async enterFirstName(text: string): Promise<void> {
     await this.firstNameField.sendKeys(text);
   }
 
-  async enterLastName(text: string): Promise<void> {
+  public async enterLastName(text: string): Promise<void> {
     await this.lastNameField.sendKeys(text);
   }
 
-  async enterUsername(text: string): Promise<void> {
+  public async enterUsername(text: string): Promise<void> {
     await this.usernameField.sendKeys(text);
   }
 
-  async enterPassword(text: string): Promise<void> {
+  public async enterPassword(text: string): Promise<void> {
     await this.passwordField.sendKeys(text);
   }
 
-  async clickRegisterButton(): Promise<void> {
+  public async clickRegisterButton(): Promise<void> {
     await this.registerButton.click();
   }
 
-  async isRegisterButtonEnabled(): Promise<boolean> {
+  public async isRegisterButtonEnabled(): Promise<boolean> {
     return await this.registerButton.isEnabled();
   }
 
-  async completeRegistrationForm(fields: RegistrationFields): Promise<void> {
-    await this.enterFirstName(fields.firstName);
-    await this.enterLastName(fields.lastName);
-    await this.enterUsername(fields.username);
-    await this.enterPassword(fields.password);
+  public async completeRegistrationForm(user: User): Promise<void> {
+    await this.enterFirstName(user.firstName);
+    await this.enterLastName(user.lastName);
+    await this.enterUsername(user.username);
+    await this.enterPassword(user.password);
     await this.clickRegisterButton();
   }
 }

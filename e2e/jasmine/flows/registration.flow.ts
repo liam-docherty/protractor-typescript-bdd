@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 import { Login } from '../../page-objects/login.po';
 import { Registration } from '../../page-objects/registration.po';
-import { RegistrationFields } from '../../support/interface/registration-fields';
+import { User } from '../../support/interface/user';
 
 const registration: Registration = new Registration();
 const login: Login = new Login();
@@ -11,8 +11,8 @@ export class RegistrationFlow {
     await browser.get('registration-login-example/#/register');
   }
 
-  public async completeRegistration(fields: RegistrationFields): Promise<void> {
-    await registration.completeRegistrationForm(fields);
+  public async completeRegistration(user: User): Promise<void> {
+    await registration.completeRegistrationForm(user);
   }
 
   public async confirmTheUserIsRedirectedToLogin(): Promise<void> {
