@@ -13,7 +13,6 @@ export class RegistrationFlow {
 
   public async completeRegistration(fields: RegistrationFields): Promise<void> {
     await registration.completeRegistrationForm(fields);
-    // await captcha.completeCaptcha();
   }
 
   public async confirmTheUserIsRedirectedToLogin(): Promise<void> {

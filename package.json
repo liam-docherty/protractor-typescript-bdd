@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "An example project to demonstrate protractor tests for angular apps",
   "scripts": {
-    "build": "tsc --outDir ./dist/",
+    "build": "tsc --outDir ./dist/e2e/",
     "lint": "tslint -c tslint.json '**/*.ts'",
-    "test-jasmine": "npm run build && protractor dist/jasmine/config.js",
-    "test-cucumber": "npm run build && protractor dist/cucumber/config.js",
+    "test-jasmine": "npm run build && protractor dist/e2e/jasmine/config.js",
+    "test-cucumber": "npm run build && protractor dist/e2e/cucumber/config.js",
     "webdriver-update": "webdriver-manager update",
     "webdriver-start": "webdriver-manager start"
   },

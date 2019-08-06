@@ -43,7 +43,7 @@ export const config: Config = {
   baseUrl: 'http://www.globalsqa.com/angularJs-protractor/',
   directConnect: true,
   specs: [
-    '../../jasmine/specs/*.spec.ts',
+    '../../../e2e/jasmine/specs/*.spec.ts',
   ],
   exclude: [],
   capabilities: {
@@ -61,8 +61,7 @@ export const config: Config = {
   },
   onPrepare() {
     require('ts-node').register({
-      project: require('path').join(__dirname, '../../jasmine/tsconfig.e2e.json'),
-      // project: '../tsconfig.json',
+      project: require('path').join(__dirname, '../../../e2e/tsconfig.e2e.json'),
     });
     jasmine.getEnv().addReporter(specReporter);
     jasmine.getEnv().addReporter(htmlReporter);

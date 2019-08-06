@@ -1,5 +1,10 @@
 # protractor-typescript-bdd
 
+# Pre-Requisites
+NodeJS
+JavaJDK
+Git
+
 `git clone ...`</p>
 Referring to
 * https://docs.npmjs.com/creating-a-package-json-file

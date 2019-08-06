@@ -8,6 +8,6 @@
 # dependencies
 /node_modules
 
-# reports
-/cucumber/reports/*
-/jasmine/reports/*
+# e2e
+/e2e/jasmine/reports/*
+/e2e/cucumber/reports/*

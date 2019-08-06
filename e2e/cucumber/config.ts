@@ -14,11 +14,11 @@ export const config: Config = {
   framework: 'custom',
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
-    require: ['../../cucumber/steps/*.steps.ts'],
+    require: ['../../../e2e/cucumber/steps/*.steps.ts'],
   },
-  specs: ['../../cucumber/features/*.feature'],
+  specs: ['../../../e2e/cucumber/features/*.feature'],
   allScriptsTimeout: 11000,
-  baseUrl: 'https://angular.io/',
+  baseUrl: 'http://www.globalsqa.com/angularJs-protractor/',
   directConnect: true,
   capabilities: {
     browserName: 'chrome',
@@ -30,9 +30,7 @@ export const config: Config = {
   },
   onPrepare() {
     require('ts-node').register({
-      // TODO: Reusing jasmine, should be moved to common location
-      project: require('path').join(__dirname, '../../jasmine/tsconfig.e2e.json'),
-      // project: '../tsconfig.json',
+      project: require('path').join(__dirname, '../../../e2e/tsconfig.e2e.json'),
     });
     browser.manage().window().maximize();
   },

@@ -8,7 +8,7 @@ const login: Login = new Login();
 const registration: Registration = new Registration();
 const flow: RegistrationFlow = new RegistrationFlow();
 
-describe('Login >', () => {
+describe('Registration >', () => {
   xit('should register successfully v1', async () => {
     await browser.get('registration-login-example/#/register');
     await element(by.id('firstName')).sendKeys('Test');
