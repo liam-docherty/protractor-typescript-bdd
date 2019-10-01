@@ -12,6 +12,9 @@ export class Login {
   private loginButton: ElementFinder = this.buttonBar.element(by.className('btn-primary'));
   private successAlert: ElementFinder = element(by.className('alert-success'));
 
+  constructor() {
+  }
+
   public async enterUsername(username: string): Promise<void> {
     await this.usernameField.sendKeys(username);
   }
