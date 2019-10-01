@@ -16,4 +16,8 @@ export class ButtonAtom extends BaseAtom {
     return await this.button.isEnabled();
   }
 
+  public async getText(): Promise<string> {
+    return await this.button.getText();
+  }
+
 }
