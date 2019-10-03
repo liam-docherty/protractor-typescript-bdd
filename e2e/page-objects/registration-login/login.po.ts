@@ -3,7 +3,7 @@ import {
   element,
   ElementFinder,
 } from 'protractor';
-import { User } from '../support/interface/user';
+import { User } from '../../support/interface/user';
 
 export class Login {
   private usernameField: ElementFinder = element(by.id('username'));

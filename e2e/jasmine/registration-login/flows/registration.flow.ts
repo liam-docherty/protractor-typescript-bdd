@@ -1,6 +1,6 @@
 import { browser } from 'protractor';
-import { Login } from '../../../page-objects/login.po';
-import { Registration } from '../../../page-objects/registration.po';
+import { Login } from '../../../page-objects/registration-login/login.po';
+import { Registration } from '../../../page-objects/registration-login/registration.po';
 import { config } from '../../config';
 import { BasicFlow } from './basic.flow';
 

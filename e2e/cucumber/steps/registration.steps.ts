@@ -5,8 +5,8 @@ import {
   When,
 } from 'cucumber';
 import { browser } from 'protractor';
-import { Login } from '../../page-objects/login.po';
-import { Registration } from '../../page-objects/registration.po';
+import { Login } from '../../page-objects/registration-login/login.po';
+import { Registration } from '../../page-objects/registration-login/registration.po';
 import { testUser1 } from '../../support/constants/users';
 import { config } from '../config';
 

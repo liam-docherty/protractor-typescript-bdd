@@ -3,8 +3,8 @@ import {
   element,
   ElementFinder,
 } from 'protractor';
-import { User } from '../support/interface/user';
-import { ButtonAtom } from './atoms/button-atom.po';
+import { User } from '../../support/interface/user';
+import { ButtonAtom } from '../atoms/button-atom.po';
 
 export class Registration {
   public readonly registerButton: ButtonAtom;
