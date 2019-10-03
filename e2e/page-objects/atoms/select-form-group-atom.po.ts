@@ -9,10 +9,10 @@ export class SelectFormGroupAtom extends FormGroupAtom {
 
   private readonly select: ElementFinder = this.formGroup.element(by.tagName('select'));
   private readonly options: ElementArrayFinder = this.select.all(by.tagName('option'));
+  private readonly currentOption: ElementFinder = this.select.element(by.css('option:checked'));
 
-  // TODO: Need to work out how to get the current value. Tried by value attribute and getText
   public async getCurrentOptionText(): Promise<string> {
-    return await this.select.getText();
+    return await this.currentOption.getText();
   }
 
   public async clickMenu(): Promise<void> {

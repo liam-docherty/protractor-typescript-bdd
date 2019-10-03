@@ -2,7 +2,7 @@ import { LoginFlow } from '../flows/login.flow';
 
 const flow: LoginFlow = new LoginFlow();
 
-describe('Banking Login >', () => {
+describe('Customer Login >', () => {
   beforeEach(async () => {
     await flow.goToLogin();
   });
