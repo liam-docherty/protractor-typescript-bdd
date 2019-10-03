@@ -15,7 +15,22 @@ describe('Banking Login >', () => {
     await flow.confirmContentPanelDetails();
   });
 
+  it('should remain on the Login page when selecting Home option', async () => {
+    await flow.selectHomeOption();
+    await flow.confirmRedirectToLoginHome();
+  });
+
   it('should include options for Customer and Bank Manager login', async () => {
     await flow.confirmLoginOptions();
+  });
+
+  it('should redirect to Customer Login when user selects Customer option', async () => {
+    await flow.selectCustomerLoginOption();
+    await flow.confirmRedirectToCustomerLogin();
+  });
+
+  it('should redirect to Bank Manager Login when user selects Bank Manager option', async () => {
+    await flow.selectBankManagerLoginOption();
+    await flow.confirmRedirectToBankManagerLogin();
   });
 });
