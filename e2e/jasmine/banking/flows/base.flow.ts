@@ -1,7 +1,7 @@
 import { BasePage } from '../../../page-objects/banking/base-page.po';
-import { RgbColour } from '../../../support/enums/rgb-colour.enum';
-import { RgbaColour } from '../../../support/enums/rgba-colour.enum';
 import { config } from '../../config';
+import { RgbColour } from '../support/enums/rgb-colour.enum';
+import { RgbaColour } from '../support/enums/rgba-colour.enum';
 
 export class BaseFlow {
 

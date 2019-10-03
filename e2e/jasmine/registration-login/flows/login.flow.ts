@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 import { Landing } from '../../../page-objects/registration-login/landing.po';
 import { Login } from '../../../page-objects/registration-login/login.po';
-import { User } from '../../../support/interface/user';
+import { User } from '../support/interfaces/user';
 import { config } from '../../config';
 import { BasicFlow } from './basic.flow';
 
@@ -21,7 +21,7 @@ export class LoginFlow extends BasicFlow {
     await landing.getSubHeadingText().then(text => expect(text).toEqual('All registered users:'));
     await landing.countRegisteredUsers().then(count => expect(count).toEqual(1));
     await landing.getUserText(0).then(text => expect(text)
-      .toEqual(`${user.username} (${user.firstName} ${user.lastName}) - Delete`));
+      .toEqual(`${ user.username } (${ user.firstName } ${ user.lastName }) - Delete`));
     await landing.getLogoutButtonText().then(text => expect(text).toEqual('Logout'));
   }
 }

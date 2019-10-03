@@ -1,8 +1,8 @@
 import { browser } from 'protractor';
 import { LoginPage } from '../../../page-objects/banking/login-page.po';
-import { RgbColour } from '../../../support/enums/rgb-colour.enum';
-import { RgbaColour } from '../../../support/enums/rgba-colour.enum';
 import { config } from '../../config';
+import { RgbColour } from '../support/enums/rgb-colour.enum';
+import { RgbaColour } from '../support/enums/rgba-colour.enum';
 import { BaseFlow } from './base.flow';
 
 const login: LoginPage = new LoginPage();

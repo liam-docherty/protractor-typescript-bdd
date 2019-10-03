@@ -1,6 +1,6 @@
-/* tslint:disable:no-console */
 import { browser } from 'protractor';
 import { CustomerPage } from '../../../page-objects/banking/customer-page.po';
+import { registeredUsers } from '../support/constants/users';
 import { BaseFlow } from './base.flow';
 
 const customer: CustomerPage = new CustomerPage();
@@ -15,14 +15,17 @@ export class CustomerFlow extends BaseFlow {
     await browser.get('BankingProject/#/customer');
   }
 
-  public async confirmPageDetails(): Promise<void> {
-    console.log('Current option: ' + await customer.content.userSelect.getCurrentOptionText());
-    await customer.content.userSelect.clickMenu();
-    console.log('Option count: ' + await customer.content.userSelect.getOptionsCount());
-    console.log('Option text: ' + await customer.content.userSelect.getOptionTextByIndex(2));
-    await customer.content.userSelect.clickOptionByIndex(2);
-    console.log('Current option: ' + await customer.content.userSelect.getCurrentOptionText());
-    console.log('Login button text: ' + await customer.content.loginButton.getText());
+  public async confirmDefaultRegisteredUserOption(): Promise<void> {
+    expect(await customer.content.userSelect.getCurrentOptionText()).toEqual('---Your Name---');
+  }
+
+  public async confirmRegisteredUserList(): Promise<void> {
+    expect(await customer.content.userSelect.getOptionsCount()).toEqual(registeredUsers.length + 1);
+    expect(await customer.content.userSelect.getOptionTextByIndex(0)).toEqual('---Your Name---');
+    for (let i: number = 1; i <= registeredUsers.length; i++) {
+      expect(await customer.content.userSelect.getOptionTextByIndex(i))
+        .toEqual(`${ registeredUsers[i - 1].firstName } ${ registeredUsers[i - 1].lastName }`);
+    }
   }
 
 }

@@ -3,7 +3,7 @@ import {
   element,
   ElementFinder,
 } from 'protractor';
-import { User } from '../../support/interface/user';
+import { User } from '../../jasmine/registration-login/support/interfaces/user';
 import { ButtonAtom } from '../atoms/button-atom.po';
 
 export class Registration {
