@@ -1,13 +1,12 @@
+import { BasePage } from './base-page.po';
 import { Customer } from './components/customer.po';
-import { Header } from './components/header.po';
 
-export class CustomerPage {
+export class CustomerPage extends BasePage {
 
-  public readonly header: Header;
   public readonly content: Customer;
 
   constructor() {
-    this.header = new Header();
+    super();
     this.content = new Customer();
   }
 

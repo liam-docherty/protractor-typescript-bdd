@@ -12,12 +12,28 @@ export class ButtonAtom extends BaseAtom {
     await this.button.click();
   }
 
-  public async isEnabled(): Promise<boolean> {
-    return await this.button.isEnabled();
+  public async isVisible(): Promise<boolean> {
+    return await this.button.isDisplayed();
+  }
+
+  public async isDisabled(): Promise<boolean> {
+    return !(await this.button.isEnabled());
   }
 
   public async getText(): Promise<string> {
     return await this.button.getText();
+  }
+
+  public async getBackgroundColour(): Promise<string> {
+    return await this.button.getCssValue('background-color');
+  }
+
+  public async getBorderColour(): Promise<string> {
+    return await this.button.getCssValue('border-color');
+  }
+
+  public async getTextColour(): Promise<string> {
+    return await this.button.getCssValue('color');
   }
 
 }

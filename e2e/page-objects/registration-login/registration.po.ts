@@ -35,8 +35,8 @@ export class Registration {
     await this.passwordField.sendKeys(password);
   }
 
-  public async isRegisterButtonEnabled(): Promise<boolean> {
-    return await this.registerButton.isEnabled();
+  public async isRegisterButtonDisabled(): Promise<boolean> {
+    return await this.registerButton.isDisabled();
   }
 
   public async completeRegistrationForm(user: User): Promise<void> {

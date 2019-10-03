@@ -1,10 +1,15 @@
 /* tslint:disable:no-console */
 import { browser } from 'protractor';
 import { CustomerPage } from '../../../page-objects/banking/customer-page.po';
+import { BaseFlow } from './base.flow';
 
 const customer: CustomerPage = new CustomerPage();
 
-export class CustomerFlow {
+export class CustomerFlow extends BaseFlow {
+
+  constructor() {
+    super(customer);
+  }
 
   public async goToCustomerLogin(): Promise<void> {
     await browser.get('BankingProject/#/customer');
