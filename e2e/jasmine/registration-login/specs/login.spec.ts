@@ -1,4 +1,4 @@
-import { testUser1 } from '../../support/constants/users';
+import { testUser1 } from '../../../support/constants/users';
 import { LoginFlow } from '../flows/login.flow';
 
 const flow: LoginFlow = new LoginFlow();

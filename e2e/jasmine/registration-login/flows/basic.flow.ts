@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
-import { Login } from '../../page-objects/login.po';
-import { Registration } from '../../page-objects/registration.po';
-import { User } from '../../support/interface/user';
+import { Login } from '../../../page-objects/login.po';
+import { Registration } from '../../../page-objects/registration.po';
+import { User } from '../../../support/interface/user';
 
 const registration: Registration = new Registration();
 const login: Login = new Login();
