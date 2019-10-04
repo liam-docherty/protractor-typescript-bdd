@@ -1,13 +1,13 @@
 import { browser } from 'protractor';
-import { LoginPage } from '../../../page-objects/banking/login-page.po';
+import { LoginHomePage } from '../../../page-objects/banking/login-home-page.po';
 import { config } from '../../config';
 import { RgbColour } from '../support/enums/rgb-colour.enum';
 import { RgbaColour } from '../support/enums/rgba-colour.enum';
 import { BaseFlow } from './base.flow';
 
-const login: LoginPage = new LoginPage();
+const login: LoginHomePage = new LoginHomePage();
 
-export class LoginFlow extends BaseFlow {
+export class LoginHomeFlow extends BaseFlow {
 
   constructor() {
     super(login);

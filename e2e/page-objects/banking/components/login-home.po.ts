@@ -5,7 +5,7 @@ import {
 import { ButtonAtom } from '../../atoms/button-atom.po';
 import { Panel } from './panel.po';
 
-export class Login extends Panel {
+export class LoginHome extends Panel {
 
   public readonly customerLoginButton: ButtonAtom;
   public readonly managerLoginButton: ButtonAtom;

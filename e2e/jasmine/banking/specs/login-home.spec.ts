@@ -1,8 +1,8 @@
-import { LoginFlow } from '../flows/login.flow';
+import { LoginHomeFlow } from '../flows/login-home.flow';
 
-const flow: LoginFlow = new LoginFlow();
+const flow: LoginHomeFlow = new LoginHomeFlow();
 
-describe('Banking Login >', () => {
+describe('Banking - Login Home >', () => {
   beforeEach(async () => {
     await flow.goToLogin();
   });
