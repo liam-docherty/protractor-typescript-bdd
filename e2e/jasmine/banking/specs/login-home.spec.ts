@@ -11,7 +11,7 @@ describe('Banking - Login Home >', () => {
     await flow.confirmNotLoggedInHeaderDetails();
   });
 
-  it('should include a panel to hold page details', async () => {
+  it('should include a panel to hold page specific content', async () => {
     await flow.confirmContentPanelDetails();
   });
 

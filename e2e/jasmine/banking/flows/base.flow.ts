@@ -21,7 +21,6 @@ export class BaseFlow {
     expect(await this.page.header.getBackgroundColour()).toEqual(RgbaColour.MidGrey);
     expect(await this.page.header.getBorderColour()).toEqual(RgbColour.DarkGrey);
     expect(await this.page.header.homeButton.getText()).toEqual('Home');
-    expect(await this.page.header.homeButton.isDisabled()).toBe(false, 'Is home button enabled?');
     expect(await this.page.header.homeButton.getTextColour()).toEqual(RgbaColour.DarkGrey);
     expect(await this.page.header.homeButton.getBackgroundColour()).toEqual(RgbaColour.LightGrey);
     expect(await this.page.header.homeButton.getBorderColour()).toEqual(RgbaColour.White);
