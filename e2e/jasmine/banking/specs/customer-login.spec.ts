@@ -1,8 +1,8 @@
-import { CustomerFlow } from '../flows/customer.flow';
+import { CustomerLoginFlow } from '../flows/customer-login.flow';
 
-const flow: CustomerFlow = new CustomerFlow();
+const flow: CustomerLoginFlow = new CustomerLoginFlow();
 
-describe('Customer Login >', () => {
+describe('Banking - Customer Login >', () => {
   beforeEach(async () => {
     await flow.goToCustomerLogin();
   });

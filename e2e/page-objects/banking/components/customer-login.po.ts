@@ -6,7 +6,7 @@ import { ButtonAtom } from '../../atoms/button-atom.po';
 import { SelectFormGroupAtom } from '../../atoms/select-form-group-atom.po';
 import { Panel } from './panel.po';
 
-export class Customer extends Panel {
+export class CustomerLogin extends Panel {
 
   public readonly userSelect: SelectFormGroupAtom;
   public readonly loginButton: ButtonAtom;

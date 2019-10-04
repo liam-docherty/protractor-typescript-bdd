@@ -1,11 +1,11 @@
 import { browser } from 'protractor';
-import { CustomerPage } from '../../../page-objects/banking/customer-page.po';
+import { CustomerLoginPage } from '../../../page-objects/banking/customer-login-page.po';
 import { registeredUsers } from '../support/constants/users';
 import { BaseFlow } from './base.flow';
 
-const customer: CustomerPage = new CustomerPage();
+const customer: CustomerLoginPage = new CustomerLoginPage();
 
-export class CustomerFlow extends BaseFlow {
+export class CustomerLoginFlow extends BaseFlow {
 
   constructor() {
     super(customer);

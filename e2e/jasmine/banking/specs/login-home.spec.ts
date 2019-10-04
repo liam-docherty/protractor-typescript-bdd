@@ -4,7 +4,7 @@ const flow: LoginHomeFlow = new LoginHomeFlow();
 
 describe('Banking - Login Home >', () => {
   beforeEach(async () => {
-    await flow.goToLogin();
+    await flow.goToLoginHome();
   });
 
   it('should reflect that user is not yet logged in header', async () => {

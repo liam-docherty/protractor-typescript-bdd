@@ -13,7 +13,7 @@ export class LoginHomeFlow extends BaseFlow {
     super(login);
   }
 
-  public async goToLogin(): Promise<void> {
+  public async goToLoginHome(): Promise<void> {
     await browser.get('BankingProject/#/login');
   }
 
