@@ -3,8 +3,8 @@ import {
   by,
   element,
 } from 'protractor';
-import { testUser1 } from '../support/constants/users';
 import { RegistrationFlow } from '../flows/registration.flow';
+import { testUser1 } from '../support/constants/users';
 
 const flow: RegistrationFlow = new RegistrationFlow();
 

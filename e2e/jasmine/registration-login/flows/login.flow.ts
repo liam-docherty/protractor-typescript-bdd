@@ -1,8 +1,8 @@
 import { browser } from 'protractor';
 import { Landing } from '../../../page-objects/registration-login/landing.po';
 import { Login } from '../../../page-objects/registration-login/login.po';
-import { User } from '../support/interfaces/user';
 import { config } from '../../config';
+import { User } from '../support/interfaces/user';
 import { BasicFlow } from './basic.flow';
 
 const login: Login = new Login();

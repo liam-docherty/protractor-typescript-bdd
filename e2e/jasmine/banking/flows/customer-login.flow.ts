@@ -1,10 +1,10 @@
 import { browser } from 'protractor';
 import { CustomerLoginPage } from '../../../page-objects/banking/customer-login-page.po';
 import { registeredUsers } from '../support/constants/users';
-import { BaseFlow } from './base.flow';
-import { User } from '../support/interfaces/user';
-import { RgbaColour } from '../support/enums/rgba-colour.enum';
 import { RgbColour } from '../support/enums/rgb-colour.enum';
+import { RgbaColour } from '../support/enums/rgba-colour.enum';
+import { User } from '../support/interfaces/user';
+import { BaseFlow } from './base.flow';
 
 const customer: CustomerLoginPage = new CustomerLoginPage();
 
@@ -38,7 +38,7 @@ export class CustomerLoginFlow extends BaseFlow {
 
   public async confirmLoginOptionIsAvailable(): Promise<void> {
     expect(await customer.content.loginButton.isVisible()).toEqual(true, 'Login button is visible');
-    expect(await customer.content.loginButton.getText()).toEqual("Login");
+    expect(await customer.content.loginButton.getText()).toEqual('Login');
     expect(await customer.content.loginButton.getTextColour()).toEqual(RgbaColour.DarkGrey);
     expect(await customer.content.loginButton.getBackgroundColour()).toEqual(RgbaColour.LightGrey);
     expect(await customer.content.loginButton.getBorderColour()).toEqual(RgbColour.MidGrey);

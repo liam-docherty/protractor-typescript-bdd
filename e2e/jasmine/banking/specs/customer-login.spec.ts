@@ -35,9 +35,10 @@ describe('Banking - Customer Login >', () => {
     await flow.confirmLoginOptionIsAvailable();
   });
 
-  it('should not allow the user to login if they switch selection from a registered user back to the default option', async () => {
-    await flow.selectRegisteredUser(harryPotter);
-    await flow.selectDefaultRegisteredUserOption();
-    await flow.confirmLoginOptionIsNotAvailable();
-  });
+  it('should not allow the user to login if they switch selection from a registered user back to the default option',
+    async () => {
+      await flow.selectRegisteredUser(harryPotter);
+      await flow.selectDefaultRegisteredUserOption();
+      await flow.confirmLoginOptionIsNotAvailable();
+    });
 });
