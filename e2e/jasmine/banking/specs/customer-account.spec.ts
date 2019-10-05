@@ -1,11 +1,14 @@
 import { CustomerAccountFlow } from '../flows/customer-account.flow';
 import { harryPotter } from '../support/constants/users';
+import { User } from '../support/interfaces/user';
 
 const flow: CustomerAccountFlow = new CustomerAccountFlow();
+let user: User;
 
 describe('Banking - Customer Account >', () => {
   beforeEach(async () => {
-    await flow.goToCustomerAccount(harryPotter);
+    user = harryPotter;
+    await flow.goToCustomerAccount(user);
   });
 
   it('should reflect that user is logged in header', async () => {
@@ -26,7 +29,8 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmRedirectToCustomerLogin();
   });
 
-  xit('should display the customer name in a welcome message', async () => {
+  it('should display the customer name in a welcome message', async () => {
+    await flow.confirmWelcomeMessageDetails(user);
   });
 
   xit('should display details of the customers first account by default', async () => {
@@ -59,7 +63,8 @@ describe('Banking - Customer Account >', () => {
   xit('should not allow the user to complete a withdrawal until they have entered an amount', async () => {
   });
 
-  xit('should not allow the user to complete a withdrawal when the amount requested is greater than the account balance', async () => {
+  xit('should not allow the user to complete a withdrawal' +
+    'when the amount requested is greater than the account balance', async () => {
   });
 
   // TODO: Other validation e.g. non number, number with more than 2 decimal places

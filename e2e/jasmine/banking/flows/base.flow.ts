@@ -1,11 +1,11 @@
+import { browser } from 'protractor';
 import { BasePage } from '../../../page-objects/banking/base-page.po';
+import { CustomerLoginPage } from '../../../page-objects/banking/customer-login-page.po';
 import { config } from '../../config';
+import { registeredUsers } from '../support/constants/users';
 import { RgbColour } from '../support/enums/rgb-colour.enum';
 import { RgbaColour } from '../support/enums/rgba-colour.enum';
-import { browser } from 'protractor';
 import { User } from '../support/interfaces/user';
-import { registeredUsers } from '../support/constants/users';
-import { CustomerLoginPage } from '../../../page-objects/banking/customer-login-page.po';
 
 const customer: CustomerLoginPage = new CustomerLoginPage();
 
