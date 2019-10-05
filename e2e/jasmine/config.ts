@@ -46,7 +46,7 @@ export const config: Config = {
   baseUrl: 'http://www.globalsqa.com/angularJs-protractor/',
   directConnect: true,
   specs: [
-    '../../../e2e/jasmine/*/specs/*.spec.ts',
+    '../../../e2e/jasmine/*/specs/customer-account.spec.ts',
   ],
   exclude: [],
   capabilities: {

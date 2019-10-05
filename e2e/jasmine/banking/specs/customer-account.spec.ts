@@ -1,13 +1,15 @@
 import { CustomerAccountFlow } from '../flows/customer-account.flow';
+import { harryPotter } from '../support/constants/users';
 
 const flow: CustomerAccountFlow = new CustomerAccountFlow();
 
 describe('Banking - Customer Account >', () => {
   beforeEach(async () => {
-
+    await flow.goToCustomerAccount(harryPotter);
   });
 
-  xit('should reflect that user is logged in header', async () => {
+  it('should reflect that user is logged in header', async () => {
+    await flow.confirmLoggedInHeaderDetails();
   });
 
   it('should include a panel to hold page specific content', async () => {
@@ -19,7 +21,9 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmRedirectToLoginHome();
   });
 
-  xit('should redirect to the Customer Login page when selecting Logout option', async () => {
+  it('should redirect to the Customer Login page when selecting Logout option', async () => {
+    await flow.selectLogoutOption();
+    await flow.confirmRedirectToCustomerLogin();
   });
 
   xit('should display the customer name in a welcome message', async () => {
@@ -40,5 +44,25 @@ describe('Banking - Customer Account >', () => {
   xit('should redirect to the Account Transactions page when user selects to view transactions', async () => {
   });
 
-  // TODO: Deposit Validation, Add Deposit, Withdraw Validation, Add Withdrawl, Switch from Deposit <-> Withdrawl
+  xit('should request an amount when the user selects to make a deposit', async () => {
+  });
+
+  xit('should not allow the user to complete a deposit until they have entered an amount', async () => {
+  });
+
+  // TODO: Other validation e.g. non number, number with more than 2 decimal places
+  // TODO: Complete valid Deposit
+
+  xit('should request an amount when the user selects to make a withdrawal', async () => {
+  });
+
+  xit('should not allow the user to complete a withdrawal until they have entered an amount', async () => {
+  });
+
+  xit('should not allow the user to complete a withdrawal when the amount requested is greater than the account balance', async () => {
+  });
+
+  // TODO: Other validation e.g. non number, number with more than 2 decimal places
+  // TODO: Complete valid Withdrawal
+  // TODO: Switch from Deposit <-> Withdrawl
 });
