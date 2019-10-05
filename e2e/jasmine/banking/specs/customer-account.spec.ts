@@ -33,7 +33,9 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmWelcomeMessageDetails(user);
   });
 
-  xit('should display details of the customers first account by default', async () => {
+  it('should display details of the customers first account by default', async () => {
+    await flow.confirmFirstAccountIsSelectedByDefault(user);
+    await flow.confirmFirstAccountDetailsAreDisplayed(user);
   });
 
   xit('should include the option to switch to another account', async () => {

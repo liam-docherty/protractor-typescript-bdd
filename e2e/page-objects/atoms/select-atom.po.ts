@@ -3,14 +3,14 @@ import {
   ElementArrayFinder,
   ElementFinder,
 } from 'protractor';
-import { FormGroupAtom } from './form-group-atom.po';
 
-export class SelectFormGroupAtom extends FormGroupAtom {
+export class SelectAtom {
 
-  // TODO: Remove methods etc. Instead introduce select as part of the constructor
-  private readonly select: ElementFinder = this.formGroup.element(by.tagName('select'));
   private readonly options: ElementArrayFinder = this.select.all(by.tagName('option'));
   private readonly currentOption: ElementFinder = this.select.element(by.css('option:checked'));
+
+  constructor(private readonly select: ElementFinder) {
+  }
 
   public async getCurrentOptionText(): Promise<string> {
     return await this.currentOption.getText();

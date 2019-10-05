@@ -36,6 +36,9 @@ In a new terminal then run either of the test scripts, depending on whether you 
 
 ## Page Object Model
 // TODO
+<br>
+Examples of different element locators:
+* **ng-model**: e2e/page-objects/banking/components/customer-account.po.ts
 
 ## Jasmine - Spec & Flow Notes
 // TODO General <br>
