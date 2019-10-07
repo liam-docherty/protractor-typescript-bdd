@@ -20,8 +20,16 @@ export class CustomerAccountFlow extends BaseFlow {
     await account.content.depositTabButton.click();
   }
 
+  public async selectDepositAmountConfirm(): Promise<void> {
+    await account.content.depositFormButton.click();
+  }
+
   public async selectWithdrawalOption(): Promise<void> {
     await account.content.withdrawalTabButton.click();
+  }
+
+  public async selectWithdrawalAmountConfirm(): Promise<void> {
+    await account.content.withdrawalFormButton.click();
   }
 
   public async confirmWelcomeMessageDetails(user: User): Promise<void> {
@@ -100,6 +108,16 @@ export class CustomerAccountFlow extends BaseFlow {
 
   public async confirmWithdrawalOptionIsHighlighted(): Promise<void> {
     expect(await account.content.withdrawalTabButton.isSelected()).toBe(true, 'Withdrawal tab button is not selected');
+  }
+
+  public async confirmWithdrawalAmountIsRequired(): Promise<void> {
+    expect(await account.content.withdrawalFormInput.isRequired()).toBe(true, 'Withdrawal amount is not required');
+    expect(await account.content.withdrawalFormInput.isInvalid()).toBe(true, 'Withdrawal amount is valid');
+  }
+
+  public async confirmDepositAmountIsRequired(): Promise<void> {
+    expect(await account.content.depositFormInput.isRequired()).toBe(true, 'Deposit amount is not required');
+    expect(await account.content.depositFormInput.isInvalid()).toBe(true, 'Deposit amount is valid');
   }
 
 }

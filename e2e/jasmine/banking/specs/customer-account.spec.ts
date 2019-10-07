@@ -63,7 +63,10 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmDepositOptionIsHighlighted();
   });
 
-  xit('should not allow the user to complete a deposit until they have entered an amount', async () => {
+  it('should not allow the user to complete a deposit until they have entered an amount', async () => {
+    await flow.selectDepositOption();
+    await flow.selectDepositAmountConfirm();
+    await flow.confirmDepositAmountIsRequired();
   });
 
   // TODO: Other validation e.g. non number, number with more than 2 decimal places
@@ -80,7 +83,10 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmWithdrawalOptionIsHighlighted();
   });
 
-  xit('should not allow the user to complete a withdrawal until they have entered an amount', async () => {
+  it('should not allow the user to complete a withdrawal until they have entered an amount', async () => {
+    await flow.selectWithdrawalOption();
+    await flow.selectWithdrawalAmountConfirm();
+    await flow.confirmWithdrawalAmountIsRequired();
   });
 
   xit('should not allow the user to complete a withdrawal' +

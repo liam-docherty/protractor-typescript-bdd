@@ -28,4 +28,12 @@ export class InputFormGroupAtom extends FormGroupAtom {
     return await this.input.getAttribute('value');
   }
 
+  public async isRequired(): Promise<boolean> {
+    return await this.hasClass(this.input,'ng-invalid-required');
+  }
+
+  public async isInvalid(): Promise<boolean> {
+    return await this.hasClass(this.input, 'ng-invalid');
+  }
+
 }
