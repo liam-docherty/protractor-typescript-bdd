@@ -12,6 +12,10 @@ export class ButtonAtom extends BaseAtom {
     await this.button.click();
   }
 
+  public async isPresent(): Promise<boolean> {
+    return await this.button.isPresent();
+  }
+
   public async isVisible(): Promise<boolean> {
     return await this.button.isDisplayed();
   }
@@ -34,6 +38,10 @@ export class ButtonAtom extends BaseAtom {
 
   public async getTextColour(): Promise<string> {
     return await this.button.getCssValue('color');
+  }
+
+  public async isSelected(): Promise<boolean> {
+    return await this.hasClass(this.button, 'btn-primary');
   }
 
 }

@@ -13,6 +13,10 @@ export class FormGroupAtom extends BaseAtom {
     super();
   }
 
+  public async isLabelPresent(): Promise<boolean> {
+    return await this.label.isPresent();
+  }
+
   public async getLabelText(): Promise<string> {
     return await this.label.getText();
   }

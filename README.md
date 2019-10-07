@@ -38,6 +38,7 @@ In a new terminal then run either of the test scripts, depending on whether you 
 // TODO
 <br>
 Examples of different element locators:
+* **attribute**: e2e/page-objects/banking/components/customer-account.po.ts
 * **ng-model**: e2e/page-objects/banking/components/customer-account.po.ts
 
 ## Jasmine - Spec & Flow Notes

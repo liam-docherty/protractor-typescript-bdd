@@ -38,19 +38,29 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmFirstAccountDetailsAreDisplayed(user);
   });
 
-  xit('should include the option to switch to another account', async () => {
+  it('should include the option to switch to other accounts', async () => {
+    await flow.confirmAccountListSelectOptions(user);
   });
 
-  xit('should display details of the alternate account when the user switches to another account', async () => {
+  it('should display details of the alternate account when the user switches to another account', async () => {
+    const accountIndex: number = 1;
+    await flow.switchAccount(accountIndex);
+    await flow.confirmSelectedAccountDetailsAreDisplayed(user, accountIndex);
   });
 
-  xit('should include options to view transactions, as well as deposit to or withdraw from their account', async () => {
+  it('should include options to view transactions, as well as deposit to or withdraw from their account', async () => {
+    await flow.confirmAccountActionsAreAvailable();
   });
 
-  xit('should redirect to the Account Transactions page when user selects to view transactions', async () => {
+  it('should not request an amount before user selects to make a deposit', async () => {
+    await flow.confirmDepositAmountRequestIsNotDisplayed();
+    await flow.confirmDepositOptionIsNotHighlighted();
   });
 
-  xit('should request an amount when the user selects to make a deposit', async () => {
+  it('should request an amount when the user selects to make a deposit', async () => {
+    await flow.selectDepositOption();
+    await flow.confirmDepositAmountRequestIsDisplayed();
+    await flow.confirmDepositOptionIsHighlighted();
   });
 
   xit('should not allow the user to complete a deposit until they have entered an amount', async () => {
@@ -59,7 +69,15 @@ describe('Banking - Customer Account >', () => {
   // TODO: Other validation e.g. non number, number with more than 2 decimal places
   // TODO: Complete valid Deposit
 
-  xit('should request an amount when the user selects to make a withdrawal', async () => {
+  it('should not request an amount before user selects to make a withdrawal', async () => {
+    await flow.confirmWithdrawalAmountRequestIsNotDisplayed();
+    await flow.confirmWithdrawalOptionIsNotHighlighted();
+  });
+
+  it('should request an amount when the user selects to make a withdrawal', async () => {
+    await flow.selectWithdrawalOption();
+    await flow.confirmWithdrawalAmountRequestIsDisplayed();
+    await flow.confirmWithdrawalOptionIsHighlighted();
   });
 
   xit('should not allow the user to complete a withdrawal until they have entered an amount', async () => {

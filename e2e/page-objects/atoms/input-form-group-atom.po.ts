@@ -8,6 +8,10 @@ export class InputFormGroupAtom extends FormGroupAtom {
 
   private readonly input: ElementFinder = this.formGroup.element(by.tagName('input'));
 
+  public async isPresent(): Promise<boolean> {
+    return await this.input.isPresent();
+  }
+
   public async enterText(text: string): Promise<void> {
     await this.input.sendKeys(text);
   }

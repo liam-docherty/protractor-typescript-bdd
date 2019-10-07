@@ -1,6 +1,9 @@
+import { ElementFinder } from 'protractor';
+
 export class BaseAtom {
 
-  constructor() {
+  protected async hasClass(element: ElementFinder, className: string): Promise<boolean> {
+    return await element.getAttribute('class').then(classes => classes.split(' ').indexOf(className) !== -1);
   }
 
 }

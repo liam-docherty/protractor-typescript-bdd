@@ -13,14 +13,17 @@ export const harryPotter: User = {
   accounts: [
     {
       number: 1004,
+      startingBalance: 0,
       currency: Currency.Dollar,
     },
     {
       number: 1005,
+      startingBalance: 0,
       currency: Currency.Pound,
     },
     {
       number: 1006,
+      startingBalance: 0,
       currency: Currency.Rupee,
     },
   ],
