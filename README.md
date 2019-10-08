@@ -2,6 +2,10 @@
 ## Project Description
 // TODO
 
+## Known Limitations
+* Tests are only run against Chrome.
+* In some specs e.g. banking/specs/customer-account.spec.ts I am using the UI to setup or teardown test data. This should instead be done using API calls.
+
 ## Pre-Requisites
 In order to clone the project and run the tests you will need the following applications installed:
 * [NodeJS](https://nodejs.org/en/download/)

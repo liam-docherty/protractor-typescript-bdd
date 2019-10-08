@@ -6,8 +6,13 @@ const flow: CustomerAccountFlow = new CustomerAccountFlow();
 let user: User;
 
 describe('Banking - Customer Account >', () => {
-  beforeEach(async () => {
+  // TODO: Instead of starting at 0, setup one deposit and one withdrawal before tests. Refactor tests accordingly
+  beforeAll(async () => {
     user = harryPotter;
+    await flow.clearCustomerAccountTransactions(user);
+  });
+
+  beforeEach(async () => {
     await flow.goToCustomerAccount(user);
   });
 
@@ -69,8 +74,27 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmDepositAmountIsRequired();
   });
 
-  // TODO: Other validation e.g. non number, number with more than 2 decimal places
-  // TODO: Complete valid Deposit
+  it('should only allow the user to enter numeric characters as a deposit amount', async () => {
+    await flow.selectDepositOption();
+    await flow.enterDepositAmount('a1b2!3%4.5');
+    await flow.confirmDepositInputValue('1234.5');
+  });
+
+  it('should only allow the user to deposit integer amounts', async () => {
+    await flow.selectDepositOption();
+    await flow.enterDepositAmount('0.5');
+    await flow.selectDepositAmountConfirm();
+    await flow.confirmDecimalDepositAmountIsRejected();
+  });
+
+  it('should update the selected account balance when a valid deposit amount is submitted', async () => {
+    await flow.selectDepositOption();
+    // TODO: Allow this to accept numbers so we are consistent with types in this test
+    await flow.enterDepositAmount('12345');
+    await flow.selectDepositAmountConfirm();
+    await flow.confirmAccountBalance(harryPotter, 0, 12345);
+    await flow.confirmDepositSuccessMessageIsDisplayed();
+  });
 
   it('should not request an amount before user selects to make a withdrawal', async () => {
     await flow.confirmWithdrawalAmountRequestIsNotDisplayed();
@@ -89,11 +113,23 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmWithdrawalAmountIsRequired();
   });
 
+  it('should only allow the user to enter numeric characters as a withdrawal amount', async () => {
+    await flow.selectWithdrawalOption();
+    await flow.enterWithdrawalAmount('a1b2!3%4.5');
+    await flow.confirmWithdrawalInputValue('1234.5');
+  });
+
+  it('should only allow the user to withdraw integer amounts', async () => {
+    await flow.selectWithdrawalOption();
+    await flow.enterWithdrawalAmount('0.5');
+    await flow.selectWithdrawalAmountConfirm();
+    await flow.confirmDecimalWithdrawalAmountIsRejected();
+  });
+
   xit('should not allow the user to complete a withdrawal' +
     'when the amount requested is greater than the account balance', async () => {
   });
 
-  // TODO: Other validation e.g. non number, number with more than 2 decimal places
   // TODO: Complete valid Withdrawal
   // TODO: Switch from Deposit <-> Withdrawl
 });

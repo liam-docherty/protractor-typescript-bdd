@@ -1,5 +1,6 @@
 import { browser } from 'protractor';
 import { BasePage } from '../../../page-objects/banking/base-page.po';
+import { CustomerAccountPage } from '../../../page-objects/banking/customer-account-page.po';
 import { CustomerLoginPage } from '../../../page-objects/banking/customer-login-page.po';
 import { config } from '../../config';
 import { registeredUsers } from '../support/constants/users';
@@ -8,6 +9,7 @@ import { RgbaColour } from '../support/enums/rgba-colour.enum';
 import { User } from '../support/interfaces/user';
 
 const customer: CustomerLoginPage = new CustomerLoginPage();
+const account: CustomerAccountPage = new CustomerAccountPage();
 
 export class BaseFlow {
 
@@ -35,10 +37,30 @@ export class BaseFlow {
     await customer.content.userSelect.clickOptionByIndex(index);
   }
 
-  public async goToCustomerAccount(user: User) {
+  public async goToCustomerAccount(user: User): Promise<void> {
     await this.goToCustomerLogin();
     await this.selectRegisteredUser(user);
     await customer.content.loginButton.click();
+  }
+
+  public async switchAccount(accountIndex: number): Promise<void> {
+    await account.content.accountSelect.clickMenu();
+    await account.content.accountSelect.clickOptionByIndex(accountIndex);
+  }
+
+  public async selectTransactionsOption(): Promise<void> {
+    await account.content.transactionsTabButton.click();
+  }
+
+  public async goToCustomerAccountTransactions(user: User, accountIndex: number = 0): Promise<void> {
+    await this.goToCustomerAccount(user);
+    await this.switchAccount(accountIndex);
+    await this.selectTransactionsOption();
+  }
+
+  public async clearCustomerAccountTransactions(user: User, accountIndex: number = 0): Promise<void> {
+    await this.goToCustomerAccountTransactions(user, accountIndex);
+    // TODO: Once page objects are done, add clicking the Reset button
   }
 
   public async confirmNotLoggedInHeaderDetails(): Promise<void> {

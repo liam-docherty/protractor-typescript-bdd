@@ -26,6 +26,7 @@ export class CustomerAccount extends Panel {
   private readonly accountDetails: ElementFinder = this.centers.get(0);
   private readonly options: ElementArrayFinder = this.centers.get(1).all(by.className('btn-lg'));
   private readonly formBox: ElementFinder = this.box.element(by.className('mainBox'));
+  private readonly transactionMessage: ElementFinder = this.formBox.element(by.className('error ng-binding'));
   private readonly depositForm: ElementFinder = this.formBox.element(by.css('form[ng-submit="deposit()"]'));
   private readonly withdrawalForm: ElementFinder = this.formBox.element(by.css('form[ng-submit="withdrawl()"]'));
 
@@ -59,6 +60,14 @@ export class CustomerAccount extends Panel {
 
   public async getActionsCount(): Promise<number> {
     return await this.options.count();
+  }
+
+  public async isTransactionMessageVisible(): Promise<boolean> {
+    return await this.transactionMessage.isDisplayed();
+  }
+
+  public async getTransactionMessageText(): Promise<string> {
+    return await this.transactionMessage.getText();
   }
 
 }

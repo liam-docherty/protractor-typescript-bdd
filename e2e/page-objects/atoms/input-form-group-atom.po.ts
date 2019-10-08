@@ -36,4 +36,8 @@ export class InputFormGroupAtom extends FormGroupAtom {
     return await this.hasClass(this.input, 'ng-invalid');
   }
 
+  public async getValidationMessageText(): Promise<string> {
+    return await this.input.getAttribute('validationMessage');
+  }
+
 }
