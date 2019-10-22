@@ -4,7 +4,7 @@ import {
   ElementFinder,
 } from 'protractor';
 
-export class Panel {
+export class ContentPanel {
 
   protected readonly box: ElementFinder = element(by.className('box padT20'));
 

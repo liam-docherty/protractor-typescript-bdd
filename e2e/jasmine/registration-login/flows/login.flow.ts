@@ -14,14 +14,13 @@ export class LoginFlow extends BasicFlow {
   }
 
   public async confirmRedirectToLandingPage(user: User): Promise<void> {
-    await browser.getCurrentUrl().then(url => expect(url)
-      .toEqual(`${ config.baseUrl }registration-login-example/#/`));
-    await landing.getHeadingText().then(text => expect(text).toEqual('Hi Test!'));
-    await landing.getHeadingParagraphText().then(text => expect(text).toEqual('You\'re logged in!!'));
-    await landing.getSubHeadingText().then(text => expect(text).toEqual('All registered users:'));
-    await landing.countRegisteredUsers().then(count => expect(count).toEqual(1));
-    await landing.getUserText(0).then(text => expect(text)
-      .toEqual(`${ user.username } (${ user.firstName } ${ user.lastName }) - Delete`));
-    await landing.getLogoutButtonText().then(text => expect(text).toEqual('Logout'));
+    expect(await browser.getCurrentUrl()).toEqual(`${ config.baseUrl }registration-login-example/#/`);
+    expect(await landing.getHeadingText()).toEqual('Hi Test!');
+    expect(await landing.getHeadingParagraphText()).toEqual('You\'re logged in!!');
+    expect(await landing.getSubHeadingText()).toEqual('All registered users:');
+    expect(await landing.countRegisteredUsers()).toEqual(1);
+    expect(await landing.getUserText(0))
+      .toEqual(`${ user.username } (${ user.firstName } ${ user.lastName }) - Delete`);
+    expect(await landing.getLogoutButtonText()).toEqual('Logout');
   }
 }

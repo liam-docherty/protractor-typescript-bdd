@@ -4,9 +4,9 @@ import {
 } from 'protractor';
 import { ButtonAtom } from '../../atoms/button-atom.po';
 import { SelectFormGroupAtom } from '../../atoms/select-form-group-atom.po';
-import { Panel } from './panel.po';
+import { ContentPanel } from './content-panel.po';
 
-export class CustomerLogin extends Panel {
+export class CustomerLogin extends ContentPanel {
 
   public readonly userSelect: SelectFormGroupAtom;
   public readonly loginButton: ButtonAtom;

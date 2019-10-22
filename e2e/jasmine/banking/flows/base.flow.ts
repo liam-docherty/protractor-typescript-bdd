@@ -1,15 +1,19 @@
 import { browser } from 'protractor';
 import { BasePage } from '../../../page-objects/banking/base-page.po';
 import { CustomerAccountPage } from '../../../page-objects/banking/customer-account-page.po';
+import { CustomerAccountTransactionsPage } from '../../../page-objects/banking/customer-account-transactions-page.po';
 import { CustomerLoginPage } from '../../../page-objects/banking/customer-login-page.po';
 import { config } from '../../config';
 import { registeredUsers } from '../support/constants/users';
 import { RgbColour } from '../support/enums/rgb-colour.enum';
 import { RgbaColour } from '../support/enums/rgba-colour.enum';
+import { TransactionType } from '../support/enums/transaction-type.enum';
+import { Transaction } from '../support/interfaces/transaction';
 import { User } from '../support/interfaces/user';
 
 const customer: CustomerLoginPage = new CustomerLoginPage();
 const account: CustomerAccountPage = new CustomerAccountPage();
+const transactions: CustomerAccountTransactionsPage = new CustomerAccountTransactionsPage();
 
 export class BaseFlow {
 
@@ -58,9 +62,31 @@ export class BaseFlow {
     await this.selectTransactionsOption();
   }
 
-  public async clearCustomerAccountTransactions(user: User, accountIndex: number = 0): Promise<void> {
+  // As mentioned in the README file, any data setup and teardown should be achieved using an API call,
+  // not by interacting with the UI
+  public async teardownCustomerAccountTransactions(user: User, accountIndex: number = 0): Promise<void> {
     await this.goToCustomerAccountTransactions(user, accountIndex);
-    // TODO: Once page objects are done, add clicking the Reset button
+    if (await transactions.content.resetButton.isVisible()) {
+      await transactions.content.resetButton.click();
+    }
+  }
+
+  public async setupCustomerAccountTransactions(user: User, accountIndex: number = 0): Promise<void> {
+    await this.goToCustomerAccount(user);
+    await this.switchAccount(accountIndex);
+    const transactionCount: number = user.accounts[accountIndex].transactions.length;
+    for (let i: number = 0; i < transactionCount; i++) {
+      const transaction: Transaction = user.accounts[accountIndex].transactions[i];
+      if (transaction.type === TransactionType.Deposit) {
+        await account.content.depositTabButton.click();
+        await account.content.depositFormInput.enterText(transaction.amount.toString());
+        await account.content.depositFormButton.click();
+      } else if (transaction.type === TransactionType.Withdrawal) {
+        await account.content.withdrawalTabButton.click();
+        await account.content.withdrawalFormInput.enterText(transaction.amount.toString());
+        await account.content.withdrawalFormButton.click();
+      }
+    }
   }
 
   public async confirmNotLoggedInHeaderDetails(): Promise<void> {

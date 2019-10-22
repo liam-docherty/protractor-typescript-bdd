@@ -1,4 +1,5 @@
 import { Currency } from '../enums/currency.enum';
+import { TransactionType } from '../enums/transaction-type.enum';
 import { User } from '../interfaces/user';
 
 export const hermoineGranger: User = {
@@ -13,18 +14,38 @@ export const harryPotter: User = {
   accounts: [
     {
       number: 1004,
-      startingBalance: 0,
+      startingBalance: 465,
       currency: Currency.Dollar,
+      transactions: [
+        {
+          type: TransactionType.Deposit,
+          amount: 21,
+        },
+        {
+          type: TransactionType.Deposit,
+          amount: 500,
+        },
+        {
+          type: TransactionType.Withdrawal,
+          amount: 47,
+        },
+        {
+          type: TransactionType.Withdrawal,
+          amount: 9,
+        },
+      ],
     },
     {
       number: 1005,
       startingBalance: 0,
       currency: Currency.Pound,
+      transactions: [],
     },
     {
       number: 1006,
       startingBalance: 0,
       currency: Currency.Rupee,
+      transactions: [],
     },
   ],
 };

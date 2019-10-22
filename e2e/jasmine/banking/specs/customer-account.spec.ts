@@ -6,10 +6,8 @@ const flow: CustomerAccountFlow = new CustomerAccountFlow();
 let user: User;
 
 describe('Banking - Customer Account >', () => {
-  // TODO: Instead of starting at 0, setup one deposit and one withdrawal before tests. Refactor tests accordingly
   beforeAll(async () => {
     user = harryPotter;
-    await flow.clearCustomerAccountTransactions(user);
   });
 
   beforeEach(async () => {
@@ -38,19 +36,8 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmWelcomeMessageDetails(user);
   });
 
-  it('should display details of the customers first account by default', async () => {
-    await flow.confirmFirstAccountIsSelectedByDefault(user);
-    await flow.confirmFirstAccountDetailsAreDisplayed(user);
-  });
-
   it('should include the option to switch to other accounts', async () => {
     await flow.confirmAccountListSelectOptions(user);
-  });
-
-  it('should display details of the alternate account when the user switches to another account', async () => {
-    const accountIndex: number = 1;
-    await flow.switchAccount(accountIndex);
-    await flow.confirmSelectedAccountDetailsAreDisplayed(user, accountIndex);
   });
 
   it('should include options to view transactions, as well as deposit to or withdraw from their account', async () => {
@@ -87,15 +74,6 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmDecimalDepositAmountIsRejected();
   });
 
-  it('should update the selected account balance when a valid deposit amount is submitted', async () => {
-    await flow.selectDepositOption();
-    // TODO: Allow this to accept numbers so we are consistent with types in this test
-    await flow.enterDepositAmount('12345');
-    await flow.selectDepositAmountConfirm();
-    await flow.confirmAccountBalance(harryPotter, 0, 12345);
-    await flow.confirmDepositSuccessMessageIsDisplayed();
-  });
-
   it('should not request an amount before user selects to make a withdrawal', async () => {
     await flow.confirmWithdrawalAmountRequestIsNotDisplayed();
     await flow.confirmWithdrawalOptionIsNotHighlighted();
@@ -126,10 +104,52 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmDecimalWithdrawalAmountIsRejected();
   });
 
-  xit('should not allow the user to complete a withdrawal' +
-    'when the amount requested is greater than the account balance', async () => {
-  });
+  // TODO: Add tests that switch from Deposit -> Withdrawl (and vice versa) and check that entered values are cleared
 
-  // TODO: Complete valid Withdrawal
-  // TODO: Switch from Deposit <-> Withdrawl
+  describe('Balance & Transactions >', () => {
+    beforeEach(async () => {
+      await flow.setupCustomerAccountTransactions(user);
+    });
+
+    afterEach(async () => {
+      await flow.teardownCustomerAccountTransactions(user);
+    });
+
+    it('should display details of the customers first account by default', async () => {
+      await flow.confirmFirstAccountIsSelectedByDefault(user);
+      await flow.confirmFirstAccountDetailsAreDisplayed(user);
+    });
+
+    it('should display details of the alternate account when the user switches to another account', async () => {
+      const accountIndex: number = 1;
+      await flow.switchAccount(accountIndex);
+      await flow.confirmSelectedAccountDetailsAreDisplayed(user, accountIndex);
+    });
+
+    it('should update the selected account balance when a valid deposit amount is submitted', async () => {
+      await flow.selectDepositOption();
+      // TODO: Allow this to accept numbers so we are consistent with types in this test
+      await flow.enterDepositAmount('12345');
+      await flow.selectDepositAmountConfirm();
+      await flow.confirmAccountBalance(harryPotter, 0, 12810);
+      await flow.confirmDepositSuccessMessageIsDisplayed();
+    });
+
+    it('should not allow the user to complete a withdrawal ' +
+      'when the amount requested is greater than the account balance', async () => {
+      await flow.selectWithdrawalOption();
+      await flow.enterWithdrawalAmountGreaterThanBalance();
+      await flow.selectWithdrawalAmountConfirm();
+      await flow.confirmWithdrawalAmountGreaterThanBalanceIsRejected();
+    });
+
+    it('should update the selected account balance when a valid withdrawal amount is submitted', async () => {
+      await flow.selectWithdrawalOption();
+      // // TODO: Allow this to accept numbers so we are consistent with types in this test
+      await flow.enterWithdrawalAmount('123');
+      await flow.selectWithdrawalAmountConfirm();
+      await flow.confirmAccountBalance(harryPotter, 0, 342);
+      await flow.confirmWithdrawalSuccessMessageIsDisplayed();
+    });
+  });
 });

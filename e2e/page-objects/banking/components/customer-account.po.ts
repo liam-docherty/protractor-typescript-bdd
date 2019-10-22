@@ -6,9 +6,9 @@ import {
 import { ButtonAtom } from '../../atoms/button-atom.po';
 import { InputFormGroupAtom } from '../../atoms/input-form-group-atom.po';
 import { SelectAtom } from '../../atoms/select-atom.po';
-import { Panel } from './panel.po';
+import { ContentPanel } from './content-panel.po';
 
-export class CustomerAccount extends Panel {
+export class CustomerAccount extends ContentPanel {
 
   public readonly accountSelect: SelectAtom;
   public readonly transactionsTabButton: ButtonAtom;
@@ -18,12 +18,16 @@ export class CustomerAccount extends Panel {
   public readonly depositFormButton: ButtonAtom;
   public readonly withdrawalFormInput: InputFormGroupAtom;
   public readonly withdrawalFormButton: ButtonAtom;
-  // TODO: There are multiple strong tags. Need to look for a better way to find welcome.
-  //  Otherwise we get multiple element warnings
-  private readonly welcome: ElementFinder = this.box.element(by.tagName('strong'));
+
+  private readonly customerDetails: ElementFinder = this.box.all(by.tagName('div')).get(0);
+  private readonly welcome: ElementFinder = this.customerDetails.element(by.tagName('strong'));
   private readonly customerName: ElementFinder = this.welcome.element(by.tagName('span'));
   private readonly centers: ElementArrayFinder = this.box.all(by.className('center'));
   private readonly accountDetails: ElementFinder = this.centers.get(0);
+  private readonly accountDetailsElements: ElementArrayFinder = this.accountDetails.all(by.tagName('strong'));
+  private readonly accountNumber: ElementFinder = this.accountDetailsElements.get(0);
+  private readonly accountBalance: ElementFinder = this.accountDetailsElements.get(1);
+  private readonly accountCurrency: ElementFinder = this.accountDetailsElements.get(2);
   private readonly options: ElementArrayFinder = this.centers.get(1).all(by.className('btn-lg'));
   private readonly formBox: ElementFinder = this.box.element(by.className('mainBox'));
   private readonly transactionMessage: ElementFinder = this.formBox.element(by.className('error ng-binding'));
@@ -32,7 +36,7 @@ export class CustomerAccount extends Panel {
 
   constructor() {
     super();
-    this.accountSelect = new SelectAtom(this.box.element(by.model('accountNo')));
+    this.accountSelect = new SelectAtom(this.customerDetails.element(by.model('accountNo')));
     this.transactionsTabButton = new ButtonAtom(this.options.get(0));
     this.depositTabButton = new ButtonAtom(this.options.get(1));
     this.depositFormInput = new InputFormGroupAtom(this.depositForm.element(by.className('form-group')));
@@ -56,6 +60,10 @@ export class CustomerAccount extends Panel {
 
   public async getAccountDetailsText(): Promise<string> {
     return await this.accountDetails.getText();
+  }
+
+  public async getAccountBalanceText(): Promise<string> {
+    return await this.accountBalance.getText();
   }
 
   public async getActionsCount(): Promise<number> {

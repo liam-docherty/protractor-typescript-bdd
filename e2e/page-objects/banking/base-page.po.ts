@@ -1,15 +1,15 @@
 import { browser } from 'protractor';
+import { ContentPanel } from './components/content-panel.po';
 import { Header } from './components/header.po';
-import { Panel } from './components/panel.po';
 
 export class BasePage {
 
   public readonly header: Header;
-  public readonly panel: Panel;
+  public readonly panel: ContentPanel;
 
   constructor() {
     this.header = new Header();
-    this.panel = new Panel();
+    this.panel = new ContentPanel();
   }
 
   public async getCurrentUrl(): Promise<string> {

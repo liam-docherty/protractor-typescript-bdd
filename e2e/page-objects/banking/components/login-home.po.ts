@@ -3,9 +3,9 @@ import {
   ElementArrayFinder,
 } from 'protractor';
 import { ButtonAtom } from '../../atoms/button-atom.po';
-import { Panel } from './panel.po';
+import { ContentPanel } from './content-panel.po';
 
-export class LoginHome extends Panel {
+export class LoginHome extends ContentPanel {
 
   public readonly customerLoginButton: ButtonAtom;
   public readonly managerLoginButton: ButtonAtom;

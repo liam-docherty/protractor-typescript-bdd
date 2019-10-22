@@ -166,6 +166,22 @@ export class CustomerAccountFlow extends BaseFlow {
     await this.confirmTransactionMessageIsNotDisplayed();
   }
 
+  public async enterWithdrawalAmountGreaterThanBalance(): Promise<void> {
+    const balance: number = Number(await account.content.getAccountBalanceText());
+    await account.content.withdrawalFormInput.enterText(String(balance + 1));
+  }
+
+  public async confirmWithdrawalAmountGreaterThanBalanceIsRejected(): Promise<void> {
+    expect(await account.content.withdrawalFormInput.getInputValue()).toEqual('');
+    expect(await account.content.withdrawalFormInput.isInvalid()).toBe(true, 'Withdrawal amount is valid');
+    expect(await account.content.getTransactionMessageText())
+      .toEqual('Transaction Failed. You can not withdraw amount more than the balance.');
+  }
+
+  public async confirmWithdrawalSuccessMessageIsDisplayed(): Promise<void> {
+    expect(await account.content.getTransactionMessageText()).toEqual('Transaction successful');
+  }
+
   private async confirmTransactionMessageIsNotDisplayed(): Promise<void> {
     expect(await account.content.isTransactionMessageVisible()).toBe(false, 'Transaction message is visible');
   }

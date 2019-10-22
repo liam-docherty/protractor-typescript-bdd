@@ -9,8 +9,7 @@ const login: Login = new Login();
 
 export class RegistrationFlow extends BasicFlow {
   public async confirmRedirectToLoginPage(): Promise<void> {
-    await browser.getCurrentUrl().then(url => expect(url)
-      .toEqual(`${ config.baseUrl }registration-login-example/#/login`));
-    await login.getSuccessAlertText().then(text => expect(text).toEqual('Registration successful'));
+    expect(await browser.getCurrentUrl()).toEqual(`${ config.baseUrl }registration-login-example/#/login`);
+    expect(await login.getSuccessAlertText()).toEqual('Registration successful');
   }
 }

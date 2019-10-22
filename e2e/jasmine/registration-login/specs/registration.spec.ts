@@ -15,6 +15,8 @@ describe('Registration >', () => {
     await flow.confirmRedirectToLoginPage();
   });
 
+  // This is an example of a test that has not been refactored to use the page object and flow approach.
+  // This has been left here an example. Refer to the README file.
   it('should disable Register until all fields are completed', async () => {
     await browser.get('registration-login-example/#/register');
     await element(by.id('firstName')).sendKeys('Test');
