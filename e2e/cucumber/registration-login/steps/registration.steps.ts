@@ -13,15 +13,15 @@ import { config } from '../../config';
 const registration: Registration = new Registration();
 const login: Login = new Login();
 
-Given(/^the user is on the registration page$/, async () => {
+Given(/^the user is on the registration page$/, async function () {
   await browser.get('registration-login-example/#/register');
 });
 
-When(/^the user successfully completes registration$/, async () => {
+When(/^the user successfully completes registration$/, async function () {
   await registration.completeRegistrationForm(testUser1);
 });
 
-Then(/^the user should be redirected to the login page$/, async () => {
+Then(/^the user should be redirected to the login page$/, async function () {
   expect(await browser.getCurrentUrl())
     .to.equal(`${ config.baseUrl }registration-login-example/#/login`);
   expect(await login.getSuccessAlertText()).to.equal('Registration successful');

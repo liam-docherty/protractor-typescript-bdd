@@ -49,6 +49,13 @@ Examples of different element locators:
 // TODO General <br>
 // TODO Flow example: what if login changes from a simple username, password component to a multiple page process e.g. captcha on page 2
 
+## Cucumber
+### Passing State & TSLint
+A `tslint.json` file has been added within the `e2e/cucumber` directory to hold customised linting rules for the Cucumber tests.<p>
+This is required because we need to be able to use `function () {}` instead of `() =>` as using arrow functions rebind the `this` keyword.<p>
+The `this` keyword in Cucumber is used to pass state between different step definitions.<p>
+A brief summary of how state is used in Cucumber can be found in the [cucumber.io documentation]("https://cucumber.io/docs/cucumber/state/").
+
 ## Protractor Config
 // TODO
 
