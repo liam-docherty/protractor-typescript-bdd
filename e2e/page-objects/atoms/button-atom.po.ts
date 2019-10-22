@@ -7,7 +7,6 @@ export class ButtonAtom extends BaseAtom {
     super();
   }
 
-  // TODO: Look for a way to move these to the BaseAtom class
   public async click(): Promise<void> {
     await this.button.click();
   }
