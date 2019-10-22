@@ -79,11 +79,11 @@ export class BaseFlow {
       const transaction: Transaction = user.accounts[accountIndex].transactions[i];
       if (transaction.type === TransactionType.Deposit) {
         await account.content.depositTabButton.click();
-        await account.content.depositFormInput.enterText(transaction.amount.toString());
+        await account.content.depositFormAmount.input.enterText(transaction.amount.toString());
         await account.content.depositFormButton.click();
       } else if (transaction.type === TransactionType.Withdrawal) {
         await account.content.withdrawalTabButton.click();
-        await account.content.withdrawalFormInput.enterText(transaction.amount.toString());
+        await account.content.withdrawalFormAmount.input.enterText(transaction.amount.toString());
         await account.content.withdrawalFormButton.click();
       }
     }

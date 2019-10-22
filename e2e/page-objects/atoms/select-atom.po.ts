@@ -3,13 +3,15 @@ import {
   ElementArrayFinder,
   ElementFinder,
 } from 'protractor';
+import { BaseAtom } from './base-atom.po';
 
-export class SelectAtom {
+export class SelectAtom extends BaseAtom {
 
   private readonly options: ElementArrayFinder = this.select.all(by.tagName('option'));
   private readonly currentOption: ElementFinder = this.select.element(by.css('option:checked'));
 
   constructor(private readonly select: ElementFinder) {
+    super();
   }
 
   public async getCurrentOptionText(): Promise<string> {

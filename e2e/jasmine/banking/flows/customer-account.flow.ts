@@ -16,7 +16,7 @@ export class CustomerAccountFlow extends BaseFlow {
   }
 
   public async enterDepositAmount(amount: string): Promise<void> {
-    await account.content.depositFormInput.enterText(amount);
+    await account.content.depositFormAmount.input.enterText(amount);
   }
 
   public async selectDepositAmountConfirm(): Promise<void> {
@@ -28,7 +28,7 @@ export class CustomerAccountFlow extends BaseFlow {
   }
 
   public async enterWithdrawalAmount(amount: string): Promise<void> {
-    await account.content.withdrawalFormInput.enterText(amount);
+    await account.content.withdrawalFormAmount.input.enterText(amount);
   }
 
   public async selectWithdrawalAmountConfirm(): Promise<void> {
@@ -76,15 +76,15 @@ export class CustomerAccountFlow extends BaseFlow {
   }
 
   public async confirmDepositAmountRequestIsNotDisplayed(): Promise<void> {
-    expect(await account.content.depositFormInput.isLabelPresent()).toBe(false, 'Deposit form label is present');
-    expect(await account.content.depositFormInput.isPresent()).toBe(false, 'Deposit form input is present');
+    expect(await account.content.depositFormAmount.isLabelPresent()).toBe(false, 'Deposit form label is present');
+    expect(await account.content.depositFormAmount.input.isPresent()).toBe(false, 'Deposit form input is present');
     expect(await account.content.depositFormButton.isPresent()).toBe(false, 'Deposit form button is present');
   }
 
   public async confirmDepositAmountRequestIsDisplayed(): Promise<void> {
-    expect(await account.content.depositFormInput.getLabelText()).toEqual('Amount to be Deposited :');
-    expect(await account.content.depositFormInput.getPlaceholderText()).toEqual('amount');
-    expect(await account.content.depositFormInput.getInputValue()).toEqual('');
+    expect(await account.content.depositFormAmount.getLabelText()).toEqual('Amount to be Deposited :');
+    expect(await account.content.depositFormAmount.input.getPlaceholderText()).toEqual('amount');
+    expect(await account.content.depositFormAmount.input.getInputValue()).toEqual('');
     expect(await account.content.depositFormButton.getText()).toEqual('Deposit');
   }
 
@@ -97,21 +97,22 @@ export class CustomerAccountFlow extends BaseFlow {
   }
 
   public async confirmDepositAmountIsRequired(): Promise<void> {
-    expect(await account.content.depositFormInput.isRequired()).toBe(true, 'Deposit amount is not required');
-    expect(await account.content.depositFormInput.isInvalid()).toBe(true, 'Deposit amount is valid');
-    expect(await account.content.depositFormInput.getValidationMessageText()).toEqual('Please fill in this field.');
+    expect(await account.content.depositFormAmount.input.isRequired()).toBe(true, 'Deposit amount is not required');
+    expect(await account.content.depositFormAmount.input.isInvalid()).toBe(true, 'Deposit amount is valid');
+    expect(await account.content.depositFormAmount.input.getValidationMessageText())
+      .toEqual('Please fill in this field.');
     await this.confirmTransactionMessageIsNotDisplayed();
   }
 
   public async confirmDepositInputValue(amount: string): Promise<void> {
-    expect(await account.content.depositFormInput.getInputValue()).toEqual(amount);
+    expect(await account.content.depositFormAmount.input.getInputValue()).toEqual(amount);
   }
 
   public async confirmDecimalDepositAmountIsRejected(): Promise<void> {
-    const input: number = Number(await account.content.depositFormInput.getInputValue());
+    const input: number = Number(await account.content.depositFormAmount.input.getInputValue());
     const lower: number = Math.floor(input);
     const upper: number = Math.ceil(input);
-    expect(await account.content.depositFormInput.getValidationMessageText())
+    expect(await account.content.depositFormAmount.input.getValidationMessageText())
       .toEqual(`Please enter a valid value. The two nearest valid values are ${ lower } and ${ upper }.`);
     await this.confirmTransactionMessageIsNotDisplayed();
   }
@@ -121,15 +122,16 @@ export class CustomerAccountFlow extends BaseFlow {
   }
 
   public async confirmWithdrawalAmountRequestIsNotDisplayed(): Promise<void> {
-    expect(await account.content.withdrawalFormInput.isLabelPresent()).toBe(false, 'Withdrawal form label is present');
-    expect(await account.content.withdrawalFormInput.isPresent()).toBe(false, 'Withdrawal form input is present');
+    expect(await account.content.withdrawalFormAmount.isLabelPresent()).toBe(false, 'Withdrawal form label is present');
+    expect(await account.content.withdrawalFormAmount.input.isPresent())
+      .toBe(false, 'Withdrawal form input is present');
     expect(await account.content.withdrawalFormButton.isPresent()).toBe(false, 'Withdrawal form button is present');
   }
 
   public async confirmWithdrawalAmountRequestIsDisplayed(): Promise<void> {
-    expect(await account.content.withdrawalFormInput.getLabelText()).toEqual('Amount to be Withdrawn :');
-    expect(await account.content.withdrawalFormInput.getPlaceholderText()).toEqual('amount');
-    expect(await account.content.withdrawalFormInput.getInputValue()).toEqual('');
+    expect(await account.content.withdrawalFormAmount.getLabelText()).toEqual('Amount to be Withdrawn :');
+    expect(await account.content.withdrawalFormAmount.input.getPlaceholderText()).toEqual('amount');
+    expect(await account.content.withdrawalFormAmount.input.getInputValue()).toEqual('');
     expect(await account.content.withdrawalFormButton.getText()).toEqual('Withdraw');
   }
 
@@ -142,33 +144,35 @@ export class CustomerAccountFlow extends BaseFlow {
   }
 
   public async confirmWithdrawalAmountIsRequired(): Promise<void> {
-    expect(await account.content.withdrawalFormInput.isRequired()).toBe(true, 'Withdrawal amount is not required');
-    expect(await account.content.withdrawalFormInput.isInvalid()).toBe(true, 'Withdrawal amount is valid');
-    expect(await account.content.withdrawalFormInput.getValidationMessageText()).toEqual('Please fill in this field.');
+    expect(await account.content.withdrawalFormAmount.input.isRequired())
+      .toBe(true, 'Withdrawal amount is not required');
+    expect(await account.content.withdrawalFormAmount.input.isInvalid()).toBe(true, 'Withdrawal amount is valid');
+    expect(await account.content.withdrawalFormAmount.input.getValidationMessageText())
+      .toEqual('Please fill in this field.');
     await this.confirmTransactionMessageIsNotDisplayed();
   }
 
   public async confirmWithdrawalInputValue(amount: string): Promise<void> {
-    expect(await account.content.withdrawalFormInput.getInputValue()).toEqual(amount);
+    expect(await account.content.withdrawalFormAmount.input.getInputValue()).toEqual(amount);
   }
 
   public async confirmDecimalWithdrawalAmountIsRejected(): Promise<void> {
-    const input: number = Number(await account.content.withdrawalFormInput.getInputValue());
+    const input: number = Number(await account.content.withdrawalFormAmount.input.getInputValue());
     const lower: number = Math.floor(input);
     const upper: number = Math.ceil(input);
-    expect(await account.content.withdrawalFormInput.getValidationMessageText())
+    expect(await account.content.withdrawalFormAmount.input.getValidationMessageText())
       .toEqual(`Please enter a valid value. The two nearest valid values are ${ lower } and ${ upper }.`);
     await this.confirmTransactionMessageIsNotDisplayed();
   }
 
   public async enterWithdrawalAmountGreaterThanBalance(): Promise<void> {
     const balance: number = Number(await account.content.getAccountBalanceText());
-    await account.content.withdrawalFormInput.enterText(String(balance + 1));
+    await account.content.withdrawalFormAmount.input.enterText(String(balance + 1));
   }
 
   public async confirmWithdrawalAmountGreaterThanBalanceIsRejected(): Promise<void> {
-    expect(await account.content.withdrawalFormInput.getInputValue()).toEqual('');
-    expect(await account.content.withdrawalFormInput.isInvalid()).toBe(true, 'Withdrawal amount is valid');
+    expect(await account.content.withdrawalFormAmount.input.getInputValue()).toEqual('');
+    expect(await account.content.withdrawalFormAmount.input.isInvalid()).toBe(true, 'Withdrawal amount is valid');
     expect(await account.content.getTransactionMessageText())
       .toEqual('Transaction Failed. You can not withdraw amount more than the balance.');
   }

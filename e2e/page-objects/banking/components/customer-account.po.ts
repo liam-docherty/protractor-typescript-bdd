@@ -14,9 +14,9 @@ export class CustomerAccount extends ContentPanel {
   public readonly transactionsTabButton: ButtonAtom;
   public readonly depositTabButton: ButtonAtom;
   public readonly withdrawalTabButton: ButtonAtom;
-  public readonly depositFormInput: InputFormGroupAtom;
+  public readonly depositFormAmount: InputFormGroupAtom;
   public readonly depositFormButton: ButtonAtom;
-  public readonly withdrawalFormInput: InputFormGroupAtom;
+  public readonly withdrawalFormAmount: InputFormGroupAtom;
   public readonly withdrawalFormButton: ButtonAtom;
 
   private readonly customerDetails: ElementFinder = this.box.all(by.tagName('div')).get(0);
@@ -39,10 +39,10 @@ export class CustomerAccount extends ContentPanel {
     this.accountSelect = new SelectAtom(this.customerDetails.element(by.model('accountNo')));
     this.transactionsTabButton = new ButtonAtom(this.options.get(0));
     this.depositTabButton = new ButtonAtom(this.options.get(1));
-    this.depositFormInput = new InputFormGroupAtom(this.depositForm.element(by.className('form-group')));
+    this.depositFormAmount = new InputFormGroupAtom(this.depositForm.element(by.className('form-group')));
     this.depositFormButton = new ButtonAtom(this.depositForm.element(by.className('btn-default')));
     this.withdrawalTabButton = new ButtonAtom(this.options.get(2));
-    this.withdrawalFormInput = new InputFormGroupAtom(this.withdrawalForm.element(by.className('form-group')));
+    this.withdrawalFormAmount = new InputFormGroupAtom(this.withdrawalForm.element(by.className('form-group')));
     this.withdrawalFormButton = new ButtonAtom(this.withdrawalForm.element(by.className('btn-default')));
   }
 
