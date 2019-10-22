@@ -104,7 +104,21 @@ describe('Banking - Customer Account >', () => {
     await flow.confirmDecimalWithdrawalAmountIsRejected();
   });
 
-  // TODO: Add tests that switch from Deposit -> Withdrawl (and vice versa) and check that entered values are cleared
+  it('should reset the deposit input amount after switching to withdrawal', async () => {
+    await flow.selectDepositOption();
+    await flow.enterDepositAmount('100');
+    await flow.selectWithdrawalOption();
+    await flow.selectDepositOption();
+    await flow.confirmDepositInputValue('');
+  });
+
+  it('should reset the withdrawal input amount after switching to deposit', async () => {
+    await flow.selectWithdrawalOption();
+    await flow.enterWithdrawalAmount('100');
+    await flow.selectDepositOption();
+    await flow.selectWithdrawalOption();
+    await flow.confirmWithdrawalInputValue('');
+  });
 
   describe('Balance & Transactions >', () => {
     beforeEach(async () => {
