@@ -1,5 +1,5 @@
-import { testUser1 } from '../../support/constants/users';
 import { LoginFlow } from '../flows/login.flow';
+import { testUser1 } from '../support/constants/users';
 
 const flow: LoginFlow = new LoginFlow();
 

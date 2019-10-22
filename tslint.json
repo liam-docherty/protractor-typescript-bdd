@@ -28,7 +28,8 @@
     "object-literal-sort-keys": false,
     "arrow-parens": false,
     "interface-name": false,
-    "no-empty": false
+    "no-empty": false,
+    "no-console": false
   },
   "rulesDirectory": [],
   "linterOptions": {

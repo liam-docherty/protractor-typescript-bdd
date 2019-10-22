@@ -5,9 +5,9 @@ import {
   When,
 } from 'cucumber';
 import { browser } from 'protractor';
-import { Login } from '../../page-objects/login.po';
-import { Registration } from '../../page-objects/registration.po';
-import { testUser1 } from '../../support/constants/users';
+import { testUser1 } from '../../jasmine/registration-login/support/constants/users';
+import { Login } from '../../page-objects/registration-login/login.po';
+import { Registration } from '../../page-objects/registration-login/registration.po';
 import { config } from '../config';
 
 const registration: Registration = new Registration();
@@ -23,6 +23,6 @@ When(/^the user successfully completes registration$/, async () => {
 
 Then(/^the user should be redirected to the login page$/, async () => {
   expect(await browser.getCurrentUrl())
-    .to.equal(`${config.baseUrl}registration-login-example/#/login`);
+    .to.equal(`${ config.baseUrl }registration-login-example/#/login`);
   expect(await login.getSuccessAlertText()).to.equal('Registration successful');
 });
