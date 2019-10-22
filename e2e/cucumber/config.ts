@@ -17,13 +17,13 @@ export const config: Config = {
   frameworkPath: require.resolve('protractor-cucumber-framework'),
   cucumberOpts: {
     require: [
-      '../../../e2e/cucumber/steps/*.steps.ts',
+      '../../../e2e/cucumber/**/steps/*.steps.ts',
       '../../../e2e/cucumber/support/hooks.ts',
     ],
     format: 'json:e2e/cucumber/reports/results.json',
     // tags: ['@Registration'],
   },
-  specs: ['../../../e2e/cucumber/features/*.feature'],
+  specs: ['../../../e2e/cucumber/**/features/*.feature'],
   allScriptsTimeout: 11000,
   baseUrl: 'http://www.globalsqa.com/angularJs-protractor/',
   directConnect: true,

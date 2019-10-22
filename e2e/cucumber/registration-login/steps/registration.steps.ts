@@ -5,10 +5,10 @@ import {
   When,
 } from 'cucumber';
 import { browser } from 'protractor';
-import { testUser1 } from '../../jasmine/registration-login/support/constants/users';
-import { Login } from '../../page-objects/registration-login/login.po';
-import { Registration } from '../../page-objects/registration-login/registration.po';
-import { config } from '../config';
+import { testUser1 } from '../../../jasmine/registration-login/support/constants/users';
+import { Login } from '../../../page-objects/registration-login/login.po';
+import { Registration } from '../../../page-objects/registration-login/registration.po';
+import { config } from '../../config';
 
 const registration: Registration = new Registration();
 const login: Login = new Login();
