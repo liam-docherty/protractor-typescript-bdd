@@ -1,3 +1,4 @@
+@Registration
 Feature: Registration
 
    Testing of the Registration component found on http://www.globalsqa.com/angularjs-protractor-practice-site/
