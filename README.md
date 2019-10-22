@@ -4,7 +4,7 @@
 
 ## Known Limitations
 * Tests are only run against Chrome.
-* In some specs e.g. banking/specs/customer-account.spec.ts I am using the UI to setup or teardown test data. This should instead be done using API calls.
+* In some specs e.g. banking/specs/customer-account.spec.ts I am using the UI to setup or teardown test data. This should instead be done using API calls to improve the performance of the tests.
 
 ## Pre-Requisites
 In order to clone the project and run the tests you will need the following applications installed:
@@ -55,42 +55,6 @@ Examples of different element locators:
 ## Pre-Push
 // TODO: Run both sets of tests and lint
 
-## Creating the Project
-// TODO: Needs tidied up<br>
-Referring to
-* https://docs.npmjs.com/creating-a-package-json-file
-* https://docs.npmjs.com/creating-node-js-modules<p>
-`npm init` then follow the command line questionaire or use `npm init --yes` to create a default package.json file<p>
-
-### Dependencies
-Referring to https://scotch.io/tutorials/setting-up-a-node-project-with-typescript<p>
-* `npm install typescript --save-dev`<br>
-* `npm install tslint --save-dev`<br>
-* `npm install protractor --save-dev`<br>
-* `npm install @types/node --save-dev`<br> --'os' in config
-* `npm install --ts-node --save-dev`<br>
-* `npm install ghooks --save-dev`<br>
-
-#### Jasmine Specific
-* `npm install jasmine --save-dev`<br>
-* `npm install @types/jasmine --save-dev`<br>
-* `npm install protractor-jasmine2-screenshot-reporter --save-dev`<br>
-* `npm install jasmine-spec-reporter --save-dev`<br>
-
-#### Cucumber Specific
-* `npm install protractor-cucumber-framework --save-dev`<br>
-* `npm install cucumber --save-dev`<br>
-* `npm install @types/cucumber --save-dev`<br>
-* `npm install chai --save-dev`<br>
-* `npm install @types/chai --save-dev`<br>
-* `npm install protractor-multiple-cucumber-html-reporter-plugin --save-dev`<br>
-
-Manually create a file at the root of the project tsconfig.json - referring to https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
-
-`./node_modules/.bin/tslint --init` to create tslint file
-
-Explain .gitignore file
-
 ## Example of Refactoring Benefits
 Initial creation of test that does not consider Don't Repeat Yourself principles:
 ````
@@ -138,3 +102,39 @@ By applying the Flow approach (described above):
 * Means that if there is a change to a flow, it can be made once and applied to all tests. Two examples might be:
     * Registration becomes a multiple page process, and completing registration is a pre-requisite to many tests
     * There are multiple tests that will redirect the user to the Login page but we want to re-use the same set of assertions
+    
+## Creating the Project
+// TODO: Needs tidied up<br>
+Referring to
+* https://docs.npmjs.com/creating-a-package-json-file
+* https://docs.npmjs.com/creating-node-js-modules<p>
+`npm init` then follow the command line questionaire or use `npm init --yes` to create a default package.json file<p>
+
+### Dependencies
+Referring to https://scotch.io/tutorials/setting-up-a-node-project-with-typescript<p>
+* `npm install typescript --save-dev`<br>
+* `npm install tslint --save-dev`<br>
+* `npm install protractor --save-dev`<br>
+* `npm install @types/node --save-dev`<br> --'os' in config
+* `npm install --ts-node --save-dev`<br>
+* `npm install ghooks --save-dev`<br>
+
+#### Jasmine Specific
+* `npm install jasmine --save-dev`<br>
+* `npm install @types/jasmine --save-dev`<br>
+* `npm install protractor-jasmine2-screenshot-reporter --save-dev`<br>
+* `npm install jasmine-spec-reporter --save-dev`<br>
+
+#### Cucumber Specific
+* `npm install protractor-cucumber-framework --save-dev`<br>
+* `npm install cucumber --save-dev`<br>
+* `npm install @types/cucumber --save-dev`<br>
+* `npm install chai --save-dev`<br>
+* `npm install @types/chai --save-dev`<br>
+* `npm install protractor-multiple-cucumber-html-reporter-plugin --save-dev`<br>
+
+Manually create a file at the root of the project tsconfig.json - referring to https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+
+`./node_modules/.bin/tslint --init` to create tslint file
+
+Explain .gitignore file

@@ -38,7 +38,7 @@ export class BaseFlow {
   public async selectRegisteredUser(user: User): Promise<void> {
     // Add one to index as registeredUsers doesn't account for the '---Your Name---' option
     const index: number = registeredUsers.indexOf(user) + 1;
-    await customer.content.userSelect.clickOptionByIndex(index);
+    await customer.content.userSelect.select.clickOptionByIndex(index);
   }
 
   public async goToCustomerAccount(user: User): Promise<void> {
@@ -117,7 +117,7 @@ export class BaseFlow {
   }
 
   public async confirmDefaultRegisteredUserOption(): Promise<void> {
-    expect(await customer.content.userSelect.getCurrentOptionText()).toEqual('---Your Name---');
+    expect(await customer.content.userSelect.select.getCurrentOptionText()).toEqual('---Your Name---');
   }
 
   protected async confirmCurrentUrl(url: string): Promise<void> {

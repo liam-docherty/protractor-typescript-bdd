@@ -13,7 +13,7 @@ export class CustomerLoginFlow extends BaseFlow {
   }
 
   public async selectDefaultRegisteredUserOption(): Promise<void> {
-    await customer.content.userSelect.clickOptionByIndex(0);
+    await customer.content.userSelect.select.clickOptionByIndex(0);
   }
 
   public async confirmLoginOptionIsNotAvailable(): Promise<void> {
@@ -30,10 +30,10 @@ export class CustomerLoginFlow extends BaseFlow {
 
   public async confirmRegisteredUserList(): Promise<void> {
     expect(await customer.content.userSelect.getLabelText()).toEqual('Your Name :');
-    expect(await customer.content.userSelect.getOptionsCount()).toEqual(registeredUsers.length + 1);
-    expect(await customer.content.userSelect.getOptionTextByIndex(0)).toEqual('---Your Name---');
+    expect(await customer.content.userSelect.select.getOptionsCount()).toEqual(registeredUsers.length + 1);
+    expect(await customer.content.userSelect.select.getOptionTextByIndex(0)).toEqual('---Your Name---');
     for (let i: number = 1; i <= registeredUsers.length; i++) {
-      expect(await customer.content.userSelect.getOptionTextByIndex(i))
+      expect(await customer.content.userSelect.select.getOptionTextByIndex(i))
         .toEqual(`${ registeredUsers[i - 1].firstName } ${ registeredUsers[i - 1].lastName }`);
     }
   }
