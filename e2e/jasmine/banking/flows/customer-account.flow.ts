@@ -49,12 +49,8 @@ export class CustomerAccountFlow extends BaseFlow {
     await this.confirmSelectedAccountDetailsAreDisplayed(user, 0);
   }
 
-  // TODO: Next 2 methods are very similar. Combine the 2 to reduce duplication
-  public async confirmAccountBalance(user: User, accountIndex: number, balance: number): Promise<void> {
-    const userAccount: Account = user.accounts[accountIndex];
-    expect(await account.content.getAccountDetailsText()).toEqual(
-      // tslint:disable-next-line:max-line-length
-      `Account Number : ${ userAccount.number.toString() } , Balance : ${ balance } , Currency : ${ userAccount.currency }`);
+  public async confirmAccountBalance(balance: string): Promise<void> {
+    expect(await account.content.getAccountBalanceText()).toEqual(balance);
   }
 
   public async confirmSelectedAccountDetailsAreDisplayed(user: User, accountIndex: number): Promise<void> {
@@ -79,7 +75,6 @@ export class CustomerAccountFlow extends BaseFlow {
     expect(await account.content.withdrawalTabButton.getText()).toEqual('Withdrawl');
   }
 
-  // TODO: A lot of these methods use common code for both the deposit and withdrawal functionality. Combine them
   public async confirmDepositAmountRequestIsNotDisplayed(): Promise<void> {
     expect(await account.content.depositFormInput.isLabelPresent()).toBe(false, 'Deposit form label is present');
     expect(await account.content.depositFormInput.isPresent()).toBe(false, 'Deposit form input is present');

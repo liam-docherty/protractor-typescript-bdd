@@ -142,10 +142,9 @@ describe('Banking - Customer Account >', () => {
 
     it('should update the selected account balance when a valid deposit amount is submitted', async () => {
       await flow.selectDepositOption();
-      // TODO: Allow this to accept numbers so we are consistent with types in this test
       await flow.enterDepositAmount('12345');
       await flow.selectDepositAmountConfirm();
-      await flow.confirmAccountBalance(harryPotter, 0, 12810);
+      await flow.confirmAccountBalance('12810');
       await flow.confirmDepositSuccessMessageIsDisplayed();
     });
 
@@ -159,10 +158,9 @@ describe('Banking - Customer Account >', () => {
 
     it('should update the selected account balance when a valid withdrawal amount is submitted', async () => {
       await flow.selectWithdrawalOption();
-      // // TODO: Allow this to accept numbers so we are consistent with types in this test
       await flow.enterWithdrawalAmount('123');
       await flow.selectWithdrawalAmountConfirm();
-      await flow.confirmAccountBalance(harryPotter, 0, 342);
+      await flow.confirmAccountBalance('342');
       await flow.confirmWithdrawalSuccessMessageIsDisplayed();
     });
   });
