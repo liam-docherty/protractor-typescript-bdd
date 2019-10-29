@@ -53,7 +53,6 @@ Before({ tags: '@_SetupCustomerAccountTransactions' }, async () => {
 After({ tags: '@_TeardownCustomerAccountTransactions' }, async () => {
   await browser.get('BankingProject/#/customer');
   // Add one to index as registeredUsers doesn't account for the '---Your Name---' option
-  this.userIndex = registeredUsers.indexOf(this.user) + 1;
   await customer.content.userSelect.select.clickOptionByIndex(this.userIndex);
   await customer.content.loginButton.click();
   await account.content.accountSelect.clickMenu();
