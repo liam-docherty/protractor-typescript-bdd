@@ -56,6 +56,11 @@ This is required because we need to be able to use `function () {}` instead of `
 The `this` keyword in Cucumber is used to pass state between different step definitions.<p>
 A brief summary of how state is used in Cucumber can be found in the [cucumber.io documentation]("https://cucumber.io/docs/cucumber/state/").
 
+### Tagged Hooks
+In order to try and differentiate between 'feature' tags and tags used to run hooks, hook tags are prefixed with `@_` e.g.
+* Standard/Feature Tag: `@CustomerAccount`
+* Hook Tag: `@_SetupCustomerAccountTransactions`
+
 ## Protractor Config
 // TODO
 
