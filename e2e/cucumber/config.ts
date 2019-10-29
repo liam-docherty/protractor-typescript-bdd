@@ -18,7 +18,7 @@ export const config: Config = {
   cucumberOpts: {
     require: [
       '../../../e2e/cucumber/**/steps/*.steps.ts',
-      '../../../e2e/cucumber/support/hooks.ts',
+      '../../../e2e/cucumber/**/support/hooks.ts',
     ],
     format: 'json:e2e/cucumber/reports/results.json',
     // tags: ['@Registration'],

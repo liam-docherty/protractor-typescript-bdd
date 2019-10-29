@@ -16,6 +16,7 @@ const customer: CustomerLoginPage = new CustomerLoginPage();
 const account: CustomerAccountPage = new CustomerAccountPage();
 
 Given(/^I am logged in as (.*)$/, async function (userName: string) {
+  // TODO: This will be required for the setup. Will likely need to move to a common method
   switch (userName) {
     case `${ hermoineGranger.firstName } ${ hermoineGranger.lastName }`:
       this.user = hermoineGranger;
@@ -27,13 +28,13 @@ Given(/^I am logged in as (.*)$/, async function (userName: string) {
       throw new Error('Customer name is not supported!');
   }
 
-  this.userAccount = this.user.accounts[0];
-
   // Add one to index as registeredUsers doesn't account for the '---Your Name---' option
-  const index: number = registeredUsers.indexOf(this.user) + 1;
+  this.userIndex = registeredUsers.indexOf(this.user) + 1;
   await browser.get('BankingProject/#/customer');
-  await customer.content.userSelect.select.clickOptionByIndex(index);
+  await customer.content.userSelect.select.clickOptionByIndex(this.userIndex);
   await customer.content.loginButton.click();
+  this.accountIndex = 0;
+  this.userAccount = this.user.accounts[this.accountIndex];
 });
 
 Then(/^the customer's default account should be selected$/, async function () {
